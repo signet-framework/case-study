@@ -1,0 +1,15 @@
+{
+  "index": "Index",
+  "quickstart": "Quickstart",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "case-study": "Case Study",
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://github.com/signet-framework/",
+    "newWindow": true
+  }
+}

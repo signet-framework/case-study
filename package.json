@@ -1,0 +1,30 @@
+{
+  "name": "case-study",
+  "version": "0.0.1",
+  "description": "Signet Case Study",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/signet-framework/case-study.git"
+  },
+  "author": "Signet Team",
+  "bugs": {
+    "url": "https://github.com/signet-framework/case-study/issues"
+  },
+  "homepage": "https://github.com/signet-framework/case-study",
+  "dependencies": {
+    "next": "^13.0.6",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
+  }
+}
