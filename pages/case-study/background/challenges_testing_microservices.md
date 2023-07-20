@@ -13,10 +13,9 @@ Each of these categories has its place. Industry best-practice for creating a we
 
 Tests which are higher on the pyramid have a larger scope and provide more confidence that the system works correctly. The consequence of their scope is that they take longer to run and provide less information about the cause of a failure. Tests which are lower on the pyramid can be executed more quickly and provide better isolation of bugs; but they provide less confidence that the application works correctly as a whole.
 
-
 ### Applying testing methodologies to microservices
 
-Compared with monoliths, microservices have more to gain from tests which are higher on the pyramid. This is becuase API calls involve more complexity than in-memory method calls, and because different microservices are often built by different teams.
+Compared with monoliths, microservices have more to gain from tests which are higher on the pyramid. This is because API calls involve more complexity than in-memory method calls, and because different microservices are often built by different teams.
 
 Let's explore an example which illustrates why broadly-scoped tests are so important for microservices. In order to do that it will be helpful to think about services assuming the role of either a **provider** or a **consumer**.
 
@@ -25,8 +24,7 @@ Let's explore an example which illustrates why broadly-scoped tests are so impor
 
 Well-designed microservices are loosely-coupled and should be allowed to remain ignorant of the implementation details of other services. This means that the team responsible for building a provider service should not need to understand how consumer services are implemented. Without knowing how consumers are implemented, it can be difficult for a provider team to know what changes they can make to their API without breaking the consumers. (1, 4, 10)
 
-Integration and E2E tests are well-suited to catch this type of error by verifying that each of the services can communicate with each other correctly. Unfortunately, it is challenging to apply broadly scoped tests to microservices without compromising independent deployability, clear ownership, and rapid continuous delivery/continuous delivery (CI/CD) cycles. Let's examine why this is the case. 
-
+Integration and E2E tests are well-suited to catch this type of error by verifying that each of the services can communicate with each other correctly. Unfortunately, it is challenging to apply broadly scoped tests to microservices without compromising independent deployability, clear ownership, and rapid continuous delivery/continuous delivery (CI/CD) cycles. Let's examine why this is the case.
 
 ### Challenges with integration testing
 
@@ -36,10 +34,9 @@ Independent deployability requires that new versions of a service can be built, 
 - Setting up the other service's runtime environment, configuring the service, and starting it up in the correct way.
 - Setting up and configuring and external dependencies that the other service requires in order to function (this might require getting additional teams involved as well).
 
-To address this problem, integration tests can be replaced with **service tests**, where the external service is replaced with a test double. The test double recieves requests from the service being tested, and sends back a canned response. This enables a team to test the integration of their service with another, without needing to spin up the other service.
+To address this problem, integration tests can be replaced with **service tests**, where the external service is replaced with a test double. The test double receives requests from the service being tested, and sends back a canned response. This enables a team to test the integration of their service with another, without needing to spin up the other service.
 
 Service tests only work as long as the real provider's interface does not change. If the provider service changes, the test double needs to be updated as well. Ideally, there should be an automated way to validate that the test double is up to date with the real service it represents.
-
 
 ### Challenges with E2E testing
 
