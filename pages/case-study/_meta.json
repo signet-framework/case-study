@@ -1,5 +1,6 @@
 {
   "outline": "Outline",
   "intro": "Introduction",
-  "background": "Background"
+  "background": "Background",
+  "design_decisions": "Design Decisions"
 }
