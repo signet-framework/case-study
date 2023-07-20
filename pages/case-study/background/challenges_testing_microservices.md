@@ -1,3 +1,4 @@
+
 ## Overview of automated testing
 
 Automated software tests are broadly grouped into three categories.
@@ -22,9 +23,9 @@ Let's explore an example which illustrates why broadly-scoped tests are so impor
 - **Provider** - a service which exposes some functionality and/or data for other services to use.
 - **Consumer** - a service which requires functionality and/or data from another service in order to fulfill its own requirements.
 
-Well-designed microservices are loosely-coupled and should be allowed to remain ignorant of the implementation details of other services. This means that the team responsible for building a provider service should not need to understand how consumer services are implemented. This can make it difficult for a provider team to know what changes they can make to their API without breaking the consumers. (1, 4, 10)
+Well-designed microservices are loosely-coupled and should be allowed to remain ignorant of the implementation details of other services. This means that the team responsible for building a provider service should not need to understand how consumer services are implemented. Without knowing how consumers are implemented, it can be difficult for a provider team to know what changes they can make to their API without breaking the consumers. (1, 4, 10)
 
-Integration and E2E tests are well-suited to catch this type of error by verifying that each of the services can communicate with each other correctly. Unfortunately, it is challenging to apply broadly scoped tests to microservices without compromising independent deployability, isolated ownership, and rapid continuous delivery/continuous deployment (CI/CD) cycles. Let's examine why this is the case. 
+Integration and E2E tests are well-suited to catch this type of error by verifying that each of the services can communicate with each other correctly. Unfortunately, it is challenging to apply broadly scoped tests to microservices without compromising independent deployability, clear ownership, and rapid continuous delivery/continuous delivery (CI/CD) cycles. Let's examine why this is the case. 
 
 
 ### Challenges with integration testing
@@ -35,21 +36,23 @@ Independent deployability requires that new versions of a service can be built, 
 - Setting up the other service's runtime environment, configuring the service, and starting it up in the correct way.
 - Setting up and configuring and external dependencies that the other service requires in order to function (this might require getting additional teams involved as well).
 
-To address this problem, integration tests can be replaced with **service tests**, where a the external service is replaced with a test double. The test double recieves requests from the service being tested, and sends back a canned response. This enables a team to test that their service interacts with the test double the way that they are expecting. 
+To address this problem, integration tests can be replaced with **service tests**, where the external service is replaced with a test double. The test double recieves requests from the service being tested, and sends back a canned response. This enables a team to test the integration of their service with another, without needing to spin up the other service.
 
-Service tests only work as long as the real provider's interface does not change. If the provider service changes, the test doubles need to be updated as well. Ideally, there should be an automated way to validate that the test doubles are up-to-date with the real services they represent. (7, 10)
+Service tests only work as long as the real provider's interface does not change. If the provider service changes, the test double needs to be updated as well. Ideally, there should be an automated way to validate that the test double is up to date with the real service it represents.
 
 
 ### Challenges with E2E testing
 
-The difficulties of testing microservices becomes dramatically greater in the context of E2E testing. There are many reasons for this, but we will take a look at two in particular.
+The difficulties of testing microservices are even greater in the context of E2E testing. There are many reasons for this, but we will take a look at two in particular.
 
-E2E testing requires simulating production conditions as best as possible in a dedicated testing environment. This is incredibly challenging with a large number of microservices, because it requires one or more instances of every service in the application to be spun up in the testing environment. Not only is this expensive, it also becomes increasingly difficult to accomplish as the architecture grows. (1)
+E2E testing requires simulating production conditions as best as possible in a dedicated testing environment. This is incredibly challenging with a large number of microservices, because it requires one or more instances of every service in the application to be spun up in the testing environment. Not only is this expensive, it also becomes increasingly difficult to accomplish as the architecture grows.
 
 Implementing this in practice may actually require multiple testing environments so that different teams can conduct tests on new versions of their service at the same time.
 
-E2E test suites can take a long time to run. They usually consist of consecutive user interactions that make up a workflow, and they often need to be run synchronously to ensure repeatability and consistency of state across different test runs. E2E tests are especially slow for microservice architectures because services interact through network calls, which are orders of magnitude slower than reading from memory. (1, 7)
+The second challenge is that E2E test suites take a long time to run. They usually consist of consecutive user interactions that make up a workflow, and they often need to be run synchronously to ensure repeatability and consistency of state across different test runs. E2E tests are especially slow for microservices because services interact through network calls, which are orders of magnitude slower than reading from memory.
 
-"I have seen \[E2E tests\] take up to a day to run, if not longer, and on one project I worked on, a full regression suite took six weeks!" Sam Newman (7 - pg. 289)
+"I have seen \[E2E tests\] take up to a day to run, if not longer, and on one project I worked on, a full regression suite took six weeks!" Sam Newman (Building Microservices - pg. 289)
 
-Besides the impracticality of them, E2E tests also degrade the speed at which new features can be shipped because the slow down the developer feedback loop. If it takes longer for developers to become aware that their changes broke something, it takes longer for them to fix it, and start the CI/CD process over again.
+Slow E2E test suites decrease the speed at which new features can be shipped because they slow down the developer feedback loop. If it takes longer for developers to become aware that their changes broke something, it takes longer for them to fix it, and start the CI/CD process over again.
+
+In order to effectively test microservices, we need ways to increase our confidence that the application works correctly as a whole, without compromising the key benefits that lead us to adopting microservices in the first place. In practice, what this means is that we want to reduce the number of integration and E2E tests in our CI/CD pipeline, and replace them with faster, cheaper, and more maintainable forms of testing that catch the same kinds of bugs that are covered by our broadly-scoped tests. Contract testing is one alternative testing methodology that supports this goal.

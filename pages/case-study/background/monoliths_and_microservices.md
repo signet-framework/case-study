@@ -53,3 +53,10 @@ Microservies are intended to address the needs of applications that need to scal
 For a single team that is responsible for managing the entire application, microservices add unnecessary complixity. Having multiple units of deployment requires additional infrastructure, and more coordination to release broadly-scoped features. In addition, requiring different domains of business logic to interact through network calls instead of in-memory method calls introduces more unreliability and latency.
 
 For newer businesses with unstable requirements, microservices decrease the potential evolvability of the app when compared to a monolithic architecture. It has hard to know with confidence what the business domains will be before the business is well established. Microservices provide significant evolvability for individual business domains, but re-architecting the entire application can be much more difficult compared to a monolith.
+
+
+-----
+## Testing microservices
+
+
+The benefits of microservices are taylored to large applications with many engineers, or medium sized applications which require high scalability and evolvability. Just having this architecture does not guarentee these benefits however. Care must be taken to ensure that independent deployability and clear ownership are maintained through the development life cycle. Testing is an area that can be especially troublesome, and requires adaptation from the traditional strategies for testing monoliths.
