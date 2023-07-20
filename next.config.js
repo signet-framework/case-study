@@ -11,11 +11,6 @@ if (isGithubActions) {
   basePath = `/${repo}`;
 }
 
-module.exports = {
-  assetPrefix: assetPrefix,
-  basePath: basePath,
-};
-
 const withNextra = require("nextra")({
   theme: "nextra-theme-docs",
   themeConfig: "./theme.config.tsx",
@@ -26,4 +21,6 @@ module.exports = withNextra({
   images: {
     unoptimized: true,
   },
+  assetPrefix: assetPrefix,
+  basePath: basePath,
 });
