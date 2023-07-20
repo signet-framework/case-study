@@ -4,15 +4,20 @@
 
 One small paragraph.
 
-## Background (very much like proposal)
-
-1. Automated testing
-2. Intro Microservices
-    1. In general
-    2. In context: problems more acute for microservices
-    3. Why unit tests are insufficient
-3. E2E Integration Testing
-    1. Challenges that lead to wanting something like contract testing
+2. Background (testing -> microservices -> testing microservices)
+    \[Note: alternative flow (microservices -> testing -> testing microservices)\]
+    1. Automated testing
+        1. Different architectures require different testing strategies
+    2. Intro Microservices
+        1. What are microservices
+        2. Are they popular, and why?
+            1. independent deployability
+            2. clear boundaries of ownership
+    3. Challenges with Testing microservices
+        1. microservices have greater need for broadly-scoped tests
+        2. integration testing
+        3. E2E testing
+        4. Alternative methodologies like contract testing address this
 
 ## Contract Testing
 
