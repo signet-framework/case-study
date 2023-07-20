@@ -1,4 +1,6 @@
 # Background - Testing Microservice Architectures
+\[This version flows (microservices -> testing -> testing microservices)\]
+\[This version goes much deeper into the differences between monoliths and microservices\]
 
 We built the Signet framework to address a specific set of challenges with testing applications composed of microservices. Before exploring those challenges, it may be helpful to set some context for what a microservice architecture is, so that we can more clearly explore why they are challenging to test. Understanding the characteristics of microservices, especially when compared to monolithic applications is key to understanding the trade-offs that Signet has made.
 
