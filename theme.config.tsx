@@ -7,9 +7,9 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/signet-framework/',
   },
   docsRepositoryBase: 'https://github.com/signet-framework/case-study',
-  // footer: {
-  // text: 'Nextra Docs Template',
-  // },
+  footer: {
+    text: '',
+  },
 }
 
 export default config
