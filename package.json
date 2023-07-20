@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "next telemetry disable",
+    "export": "next export"
   },
   "repository": {
     "type": "git",
