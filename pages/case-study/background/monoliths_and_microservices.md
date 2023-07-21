@@ -1,7 +1,7 @@
-# Testing Microservice Architectures
+# Monoliths and Microservices
 
-\[This version flows (microservices -> testing -> testing microservices)\]
-\[This version goes much deeper into the differences between monoliths and microservices\]
+**\[This version flows (microservices -> testing -> testing microservices)\]\
+\[This version goes much deeper into the differences between monoliths and microservices\]**
 
 We built the Signet framework to address a specific set of challenges with testing applications composed of microservices.
 Before exploring those challenges, it may be helpful to set some context for what a microservice architecture is, so that we can more clearly explore why they are challenging to test.
@@ -45,10 +45,11 @@ This incentivizes teams to batch together multiple updates in every new deployme
 Although there are many examples of large organizations that employ a monolithic architecture, the characteristics of monoliths are better suited for smaller applications managed by a single team.
 Fortunately, other architecture exist that offer a different set of trade-offs specifically tailored to operating at a large scale.
 
-## Introducing Microservices
+## Enter Microservices
 
 Another popular architecture, microservices, are specifically designed to meet the needs of large and/or highly scalable applications.
 In a **microservice architecture**, the business logic is split up into *independently deployable services*, each of which represents a separate business domain.
+
 A **service** can be thought of as a miniature application which encapsulates its own business logic and data.
 A service exposes an interface so that other services can consume its functionality through messages sent over the network.
 
@@ -62,32 +63,30 @@ In many cases, this allows a team to own the full life-cycle of a service, from 
 
 Second, since each service can be deployed on its own infrastructure with its own runtime environment, services can be implemented in whatever way is most suitable for their business requirements.
 Services can use different tech stacks according to the trade-offs they offer, and can be scaled independently according to load and performance requirements of their role.
-\[NTD by Zach: maybe cut this para for signet specificity?\]
+**\[NTD by Zach: maybe cut this para for signet specificity?\]**
 
-\[NTD: maybe move this up if it is most important, assuming it did not require the prior stuff to set it up\]
-**Independent deployability** may be the most important benefit of a microservices architecture.
-When one part of a business needs a new feature, the team responsible for that domain should be able to build the feature, and deploy a new version of their service, without coordinating with any other teams.
+This aspect of **independent deployability** may be the most important benefit of a microservices architecture.
+When one part of a business needs a new feature, the responsible team should be able to build the feature and deploy a new version of the service with minimal coordination with other service teams.
 As long as a service does not change its external interface in a backwards-incompatible way, it can be built and deployed independently.
 This allows an organization to ship new features quickly even as the size of the application grows.
 
 ### Microservices Challenges
 
 Microservies are intended to address the needs of applications that need to scale quickly and to a large size.
-They are less suitable for small applications, especially when a business is new and requirements are not known with a high degree of confidence.
+They may be less suitable for small applications, especially when a business is new and requirements are not known with a high degree of confidence.
 
-For a single team that is responsible for managing the entire application, microservices add unnecessary complexity.
-Having multiple units of deployment requires additional infrastructure and more coordination to release broadly-scoped features.
+For a single team that is responsible for managing the entire application, microservices may introduce unnecessary complexity; having multiple units of deployment requires additional infrastructure and more coordination to release broadly-scoped features.
 In addition, requiring different domains of business logic to interact through network calls instead of in-memory method calls introduces unreliability and latency.
 
-For newer businesses with unstable requirements, microservices decrease the potential evolvability of the app when compared to a monolithic architecture.
+For newer businesses with unstable requirements, microservices decrease the potential evolvability of the app, when compared to a monolithic architecture.
 It may be challenging to predict with confidence what the business domains will be before the business is well established.
-Microservices provide significant evolvability for individual business domains, but re-architecting \[NTD: this may be too far...\] the entire application can be much more difficult compared to a monolith.
+Microservices provide significant evolvability for individual business domains, but making changes that affect the entire application may be much more difficult compared to a monolith.
 
 ## Testing Microservices
 
 The benefits of microservices are tailored to large applications with many engineers, or medium sized applications which require high scalability and evolvability.
 Simply having this architecture does not guarantee that these benefits will be realized, however.
-Care must also be taken to ensure that independent deployability and clear ownership are maintained through the development life cycle.
-Testing is an area that can be especially troublesome, and requires adaptation from the traditional strategies for testing monoliths.
+Care must also be taken to ensure that independent deployability and clear ownership are maintained throughout the development life cycle.
+**Testing** is an area that can be especially troublesome for microservices and requires adaptation from the traditional strategies for testing monoliths.
 
 [^1]: DDIA pg. 47.

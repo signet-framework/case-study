@@ -2,7 +2,9 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
-  logo: <span>Signet</span>,
+  logo: (<>
+    <img src={"/transparent-logo-horizontal-mn.svg"} style={{ maxHeight: "5rem" }} alt="logo" />
+  </>),
   project: {
     link: 'https://github.com/signet-framework/',
   },
@@ -10,6 +12,12 @@ const config: DocsThemeConfig = {
   footer: {
     text: '',
   },
+  editLink: {
+    text: null,
+  },
+  feedback: {
+    content: null
+  }
 }
 
 export default config
