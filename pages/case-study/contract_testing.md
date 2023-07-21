@@ -1,6 +1,6 @@
 # Contract Testing
 
-Many of the benefits of integration and E2E tests can also be achieved using contract tests. Furthermore, contract tests attempt to maintain independent service development cycles, while also provided faster feedback loops than broadly-scoped tests can typically attain.
+Many of the benefits of integration and E2E tests can also be achieved using contract tests. Furthermore, contract tests attempt to maintain indepenedent service development cycles, while also provided faster feedback loops than broadly-scoped tests can typically attain.
 
 The typical way to integration test two services is to spin up both services in the same environment, and cause the consumer service to make API calls to the provider service. If the provider service responds correctly, and the consumer service handles the responses correctly, the integration tests are successful. 
 
@@ -116,4 +116,22 @@ Spec-driven contract testing is the most conducive to independent deployability.
 
 ## Existing Solutions
 
-Should we only focus on spec-driven ones? 
+### Pact
+
+Pact is the most well-known open source option for contract testing. It uses a purely consumer-driven model. Two notable characteristics of Pact are that it relies on client libraries for writing consumer contract tests, and it includes a backend application called a "broker". The broker is responsible for managing contracts, and describing the reasons for failed tests. It also gives developers insight into which services are deployed where, and whether or not their service is safe to be deployed to a given environment.
+
+Two challenges we see with Pact are that it only works with consumer-driven contract testing, and that it requires substantial initial investment in writing additional unit tests.
+
+### PactFlow
+
+The creators of Pact have more recently come out with a paid Software-as-a-Service (SaaS) product called PactFlow. Pactflow builds on the foundation of Pact to provided a service they call "Bidirectional" contract testing. Bidirectional supports both provider-driven and spec-driven models by allowing the provider's API spec to be published before or after it has been tested against the provider service. While PactFlow significantly improves upon the flexibility of Pact, it still requires substantial effort to add contract testing into the CI/CD workflow. Consumer teams still need to write new unit tests using a Pact client library, or else configure their own solution for generating the consumer contract. Provider teams likewise need to supply their own solution for testing the provider implementation against the API spec. 
+
+### Karate
+
+Karate is another popular open-source solution for contract testing. Karate takes a unique approach to provider-driven contract testing. Rather than codifying the integration in a document, Karate represents the contract in the form of a test-double.  There are multiple steps to their workflow, but the upshot is that the provider team uses Karate to create a mock of the provider service. The consumer team can then use the mock in their service tests to verify that the consumer will integrate correctly with the real provider. Although Karate does not use unit tests to generate a consumer contract, developer's still use Karate's DSL to manually program the provider mock to responsed correctly to the specific requests from the consumer.
+
+### Specmatic
+
+Specmatic is another SaaS offering for spec-driven contract testing. A key feature of Specmatic is that it offers a way to generate the contract by automatically recording the interactions between the consumer and provider service. This means that contract testing can be achieved with a significantly smaller startup cost. 
+
+Another characteristic of Specmatic is that there is no broker--contracts are stored in version control instead. While this comprises a simple solution for managing contracts, it loses out on some interesting features that a broker can provide. For instance, in order for a CI/CD pipeline to automatically gate a deployment based on what is currently deployed, significant effort must be expended to DIY this capability.
