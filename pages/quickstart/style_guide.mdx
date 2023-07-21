@@ -9,11 +9,22 @@ import Hlt from '../../components/Hlt'
   - "Eats, shoots<Hlt> , </Hlt> and leaves".
   - [*Cf.*](https://en.wikipedia.org/wiki/Cf.) these [guys](https://www.youtube.com/watch?v=P_i1xk07o4g) => catchy, but they are clearly wrong.
 
-- Footnote format[^1]
+- Footnote format
+  - Use this syntax to mark the footnote inline with the text:
+
+    ```markdown
+    Some words.[^1] More words.
+    ```
+
+  - Then at the bottom of the file:
+
+    ```markdown
+    [^1]: This is footnote text.
+    ```
 
 - Let's standardize the capitalization of our terms:
   - OpenAPI Specification
   - Deploy Guard
   - Signet broker (should we capitalize broker?)
 
-[^1]: Footnote text.
+[^1]: This is footnote text.

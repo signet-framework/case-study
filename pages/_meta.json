@@ -1,6 +1,18 @@
 {
-  "index": "Index",
+  "index": {
+    "title": "Home",
+    "display": "hidden",
+    "type": "page"
+  },
+  "case-study-header-link": {
+    "title": "Case Study",
+    "type": "page",
+    "href": "./case-study"
+  },
   "quickstart": "Quickstart",
+  "case-study": {
+    "title": "Case Study"
+  },
   "about": {
     "title": "About",
     "type": "page"
