@@ -4,7 +4,7 @@
   "description": "Signet Case Study",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -r ./out/* && next build",
     "start": "next start",
     "postinstall": "next telemetry disable",
     "export": "next export"
