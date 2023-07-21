@@ -1,19 +1,25 @@
+# Challenges Testing Microservices
 
-## Overview of automated testing
+## Automated Testing
 
-Automated software tests are broadly grouped into three categories.
+Automated software tests are broadly grouped into three categories:
 
-- **Unit Tests** - test individual components of a program. The subject under test is a single function, a class, or some other unit of non-trivial programming logic.
-- **Integration Tests** - test that multiple logical components of the system function correctly together.
-- **End-to-End Tests** (E2E) - exercise full-system workflows as they would occur when triggered in production.
+- **Unit Tests** - test *individual* components of a program.
+  The subject under test is a single function, a class, or some other unit of non-trivial programming logic.
+- **Integration Tests** - test that multiple logical components of the system function correctly *together*.
+- **End-to-End Tests ("E2E")** - exercise *full-system* workflows as they would occur when triggered in production.
 
-Each of these categories has its place. Industry best-practice for creating a well-balanced test suite is often depicted with a pyramid.
+Each of these categories has its place.
+Industry best-practice for creating a well-balanced test suite is often depicted with a pyramid.
 
 (Pyramid image here)
 
-Tests which are higher on the pyramid have a larger scope and provide more confidence that the system works correctly. The consequence of their scope is that they take longer to run and provide less information about the cause of a failure. Tests which are lower on the pyramid can be executed more quickly and provide better isolation of bugs; but they provide less confidence that the application works correctly as a whole.
+This arrangement illustrates the tradeoff between the usefulness of the tests and the practicality of running them.
+Tests which are higher on the pyramid have a broader scope and provide more confidence that the system works correctly.
+However, their broader scope tends to mean they take longer to run and provide less information about the causes when a failure occurs.
+In contrast, tests that are lower on the pyramid can be executed more quickly and provide better isolation of bugs. However these tests provide less confidence that the application works correctly as a whole.
 
-### Applying testing methodologies to microservices
+### Testing Microservices
 
 Compared with monoliths, microservices have more to gain from tests which are higher on the pyramid. This is because API calls involve more complexity than in-memory method calls, and because different microservices are often built by different teams.
 
