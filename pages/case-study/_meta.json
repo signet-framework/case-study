@@ -2,5 +2,6 @@
   "outline": "Outline",
   "intro": "Introduction",
   "background": "Background",
-  "design_decisions": "Design Decisions"
+  "design_decisions": "Design Decisions",
+  "signet_framework": "Signet Framework"
 }
