@@ -1,6 +1,6 @@
 {
   "background": "Background",
   "contract_testing": "Contract Testing",
-  "design_decisions": "Design Decisions",
-  "signet_framework": "Signet Framework"
+  "signet_framework": "Signet Framework",
+  "design_decisions": "Design Decisions"
 }
