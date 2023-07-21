@@ -42,23 +42,25 @@ Contract tests are intended to catch inintended changes to the integration that 
 
 (I think it is probably worth cutting the section below... or at least having a more concise example)
 Suppose we have a consumer service that wants to know the Date of Birth for a specific user. The service uses HTTP, and makes a request to the "Users" microservice that looks like this:
+
 ```
 GET /users/date-of-birth?username=catowner22
 ```
 
 The consumer service is expecting the "Users" service to respond with a payload like this:
+
 ```json
 {
-	"username": "catowner22",
-	"dob": "7-10-1998"
+  "username": "catowner22",
+  "dob": "7-10-1998"
 }
 ```
 
 Instead of giving the DOB as a string, what if the provider returns a number instead--the date in  milliseconds since the UNIX epoch:
 ```json
 {
-	"username": "catowner22",
-	"dob": 900028800000
+  "username": "catowner22",
+  "dob": 900028800000
 }
 ```
 This is a schema change--the meaning of the value is the same, but its format is different.
@@ -66,8 +68,8 @@ This is a schema change--the meaning of the value is the same, but its format is
 Instead, what if the "Users" service response with a different date?
 ```json
 {
-	"username": "catowner22",
-	"dob": "1-23-2005"
+  "username": "catowner22",
+  "dob": "1-23-2005"
 }
 ```
 This constitutes a semantic change--the value has the same format, but the meaning of the value is different.
