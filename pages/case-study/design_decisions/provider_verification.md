@@ -14,7 +14,7 @@ The results of this verification are then integrated into Deploy Guard, adding a
 There are two steps to provider verification:
 
   1. Testing the provider
-  2. Publishing the test results to the Signet broker.
+  2. Publishing the test results to the Signet broker
 
 Upon analyzing this process, we realized that publishing the test results does not require knowledge of how the results were obtained.
 This observation led us to explore the possibility of decoupling the second step from the first.
@@ -38,7 +38,8 @@ The main benefit of this approach is that it's both **language and platform agno
 
 ### Generate Unit Tests from the Specification
 
-We also considered a couple of other approaches. The first was to to **generate unit tests automatically** from the OpenAPI Specification; the provider is verified if they pass the generated unit tests.
+We also considered a couple of other approaches.
+The first was to to **generate unit tests automatically** from the OpenAPI Specification; the provider is verified if they pass the generated unit tests.
 The main advantage of this approach is its convenience in a new codebase, as it automates the process of writing unit tests for the specification.
 However, the code-invasive nature of this approach entails a few downsides.
 First, integrating our feature with existing testing frameworks would be problematic, as it would require developing individual support for each framework.
