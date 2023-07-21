@@ -7,7 +7,7 @@
   "case-study-header-link": {
     "title": "Case Study",
     "type": "page",
-    "href": "./case-study"
+    "href": "/case-study"
   },
   "quickstart": "Quickstart",
   "case-study": {
