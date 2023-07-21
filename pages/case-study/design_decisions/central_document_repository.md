@@ -40,7 +40,7 @@ In contrast, using Github alone would necessitate relying on third-party softwar
 ### Lack of Version Control Collaboration
 
 One drawback of using the Signet broker is the absence of version control collaboration.
-With Github, Teams can leverage Github's pull request system to collaboratively manage changes on contracts and specifications.
+With Github, teams can leverage Github's pull request system to collaboratively manage changes on contracts and specifications.
 By treating documents as code, teams can enforce collaboration by requiring approval from other teams for pull requests.
 
 ### Management and Maintenance
