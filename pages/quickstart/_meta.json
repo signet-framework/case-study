@@ -1,4 +1,5 @@
 {
+  "style_guide": "Style Guide",
   "folders": "Folders and _meta.json",
   "embed_image": "Embed an Image",
   "mdx_with_react": "MDX with React"
