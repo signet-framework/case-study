@@ -1,6 +1,26 @@
-const withNextra = require('nextra')({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
-})
+// const isGithubActions = process.env.GITHUB_ACTIONS || false;
 
-module.exports = withNextra()
+// let assetPrefix = "";
+// let basePath = "";
+
+// if (isGithubActions) {
+//   // trim off `<owner>/`
+//   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
+
+//   assetPrefix = `/${repo}/`;
+//   basePath = `/${repo}`;
+// }
+
+const withNextra = require("nextra")({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.tsx",
+});
+
+module.exports = withNextra({
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  // assetPrefix: assetPrefix,
+  // basePath: basePath,
+});

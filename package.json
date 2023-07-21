@@ -4,8 +4,10 @@
   "description": "Signet Case Study",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "rm -r ./out/* && next build",
+    "start": "next start",
+    "postinstall": "next telemetry disable",
+    "export": "next export"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,8 @@
     "nextra": "latest",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sharp": "^0.32.3"
   },
   "devDependencies": {
     "@types/node": "18.11.10",

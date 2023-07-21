@@ -1,17 +1,18 @@
 # Contract Testing
 
-Many of the benefits of integration and E2E tests can also be achieved using contract tests. Furthermore, contract tests attempt to maintain independent service development cycles, while also provided faster feedback loops than broadly-scoped tests can typically attain.
+Many of the benefits of integration and E2E tests can also be achieved using contract tests.
+Furthermore, contract tests attempt to maintain independent service development cycles, while also allowing faster feedback loops than broadly-scoped tests can typically attain.
 
 The typical way to integration test two services is to spin up both services in the same environment, and cause the consumer service to make API calls to the provider service.
 If the provider service responds correctly, and the consumer service handles the responses correctly, the integration tests are successful.
 
-(diagram here illustrating an integration test)
+**TODO: diagram here illustrating an integration test**
 
 During contract tests, the interactions between the consumer and provider services are described in a document called a **contract**.
 Both services can be individually tested to determine if they conform to the contract.
 If either service does not behave according to what is described in the contract, the test fails, and the team which owns the service is notified that their service will not integrate correctly with the other service.
 
-(diagram here illustrating a contract test)
+**TODO: diagram here illustrating a contract test**
 
 ## Benefits of Contract Testing
 
@@ -35,7 +36,6 @@ Contract tests are not designed to replicate conditions like latency, service un
 Ideally, contract tests can reduce the dependence on E2E tests enough that they can be run asynchronously from the CI/CD pipeline.
 Successful implementation of contract testing increases the independence of teams, while still maintaining a high degree of confidence that breaking changes will be caught early on.
 
-
 Another trade-off with contract testing is that it usually requires a large startup cost at the beginning.
 Some forms of contract testing require swaths of new unit tests to be written.
 In these cases, an organization does not get the confidence benefit of contract testing until the new unit tests cover the majority of the service's interface.
@@ -58,6 +58,7 @@ Contract tests can be categorized according to the type of breaking change they 
 - **Semantic change** - a change to the meaning of a message
 
 (I think it is probably worth cutting the section below... or at least having a more concise example)
+
 Suppose we have a consumer service that wants to know the Date of Birth for a specific user.
 The service uses HTTP, and makes a request to the "Users" microservice that looks like this:
 ```
@@ -65,18 +66,19 @@ GET /users/date-of-birth?username=catowner22
 ```
 
 The consumer service is expecting the "Users" service to respond with a payload like this:
+
 ```json
 {
-	"username": "catowner22",
-	"dob": "7-10-1998"
+  "username": "catowner22",
+  "dob": "7-10-1998"
 }
 ```
 
 Instead of giving the DOB as a string, what if the provider returns a number instead--the date in  milliseconds since the UNIX epoch:
 ```json
 {
-	"username": "catowner22",
-	"dob": 900028800000
+  "username": "catowner22",
+  "dob": 900028800000
 }
 ```
 This is a schema change--the meaning of the value is the same, but its format is different.
@@ -84,8 +86,8 @@ This is a schema change--the meaning of the value is the same, but its format is
 Instead, what if the "Users" service response with a different date?
 ```json
 {
-	"username": "catowner22",
-	"dob": "1-23-2005"
+  "username": "catowner22",
+  "dob": "1-23-2005"
 }
 ```
 This constitutes a semantic change--the value has the same format, but the meaning of the value is different.
@@ -110,7 +112,6 @@ In other words, who is the source of truth? Does the contract originate from how
 In consumer-driven contract testing, the consumer service is implemented first.
 After the consumer team has implemented their side of the integration, they use unit tests to generate a consumer contract, which describes the expectations that the consumer service has of the provider service.
 The consumer contract is handed over to the provider team, and they implement the provider service's interface to satisfy the needs of the consumer.
-
 
 One advantage of a consumer-driven approach is that the contract only includes the parts of the provider's API which are actually being used.
 This gives the provider team insight into how they can evolve their API without breaking the consumers.
@@ -142,17 +143,14 @@ Provider-driven contract testing is nearly the reverse of consumer-driven.
 The provider service is implemented first, and a provider contract is generated that describes the provider's side of the integration.
 Usually the provider contract comes in the form of an API specification, other times the provider team distributes a test-double which consumers can test against.
 
-
 The main benefit of a provider-driven approach is that it gives the provider team authority over what the integration must look like.
 Whether or not this is a good fit is specific to the organization, and depends on the roles of the services involved.
 Many organizations prefer a more collaborative approach to API design, where consumer and provider teams work together.
-
 
 Provider-driven contract tests are mainly schema-based, unless significant effort is expended to tailor the contract (or test double) to all of the consumers involved.
 It is natural to describe an API in terms of the schema is requires and the general behaviors it is capable of.
 However, it is difficult-to-impossible to exhaustively describe the semantics of every possible interaction with the API.
 Creating specific test cases requires knowing about the specific needs of each consumer--a provider contract is not designed for that purpose.
-
 
 #### Spec-driven
 
@@ -167,7 +165,6 @@ Spec-driven contract testing is the most conducive to independent deployability.
 The API spec is decided at the beginning, and both services can be tested against the spec independently.
 Neither team needs help from the other to test the integration.
 As long as the both teams require every new version of their service to be tested for conformance to the spec, the life-cycles of the two services remain decoupled.
-
 
 ## Existing Solutions
 

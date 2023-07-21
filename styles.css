@@ -1,0 +1,13 @@
+main p {
+  text-align: justify;
+}
+
+.logo {
+  /* max-width: 100%;
+   */
+   object-fit: contain;
+}
+
+.footnotes {
+  margin-top: 2rem;
+}
