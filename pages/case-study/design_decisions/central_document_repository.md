@@ -15,7 +15,7 @@ While Github can serve as a central repository, we decided that developing a ded
 
 With a dedicated broker, Signet's functionality is no longer confined within the Signet CLI.
 Instead, the broker handles various tasks, including the logic for Deploy Guard.
-This enables automatic fetching of data for documents and deployment states of consumer and provider versions
+This enables automatic fetching of data for documents and deployment states of consumer and provider versions.
 If Github were the central repository, implementing automatic fetching would be challenging, and developers would have to manually provide Deploy Guard with data about documents and deployment states.
 
 ### Automatic Comparison
