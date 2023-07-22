@@ -3,14 +3,12 @@
 **\[This version flows (microservices -> testing -> testing microservices)\]\
 \[This version cuts most of the monolith section, and slims down the microservices section\]**
 
-Signet address a specific challenges with testing applications composed of microservices.
+Signet addresses specific challenges with testing applications composed of microservices.
 Before exploring those challenges, we discuss the attributes of microservices which underpin the decisions we made when designing Signet.
-
-Microservices are best introduced in contrast to Monoliths.
 
 ## What is a Monolith?
 
-In a **monolithic** architecture, all of the application's business logic is deployed together as a single unit.
+Microservices are best introduced in contrast to Monoliths. In a **monolithic** architecture, all of the application's business logic is deployed together as a single unit.
 Typically this means that the code for every business domain is stored in the same repository and is run as a single operating system process.
 Each business domain is modeled by one or more programming constructs (module, class, package, etc.).
 One business domain can interact with the others through in-memory method calls.
@@ -36,6 +34,6 @@ Giving teams a narrow scope allows them to own the full life-cycle of their serv
 
 ## Testing Microservices
 
-In order to realize the benefits of microservices, care must also be taken to ensure that independent deployability and clear ownership are maintained throughout the development life cycle.
+In order to realize the benefits of microservices, care must be taken to ensure that independent deployability and clear ownership are maintained throughout the development life cycle.
 **Testing** is an area that can be especially troublesome for microservices and requires adaptation from the traditional strategies for testing monoliths.
 
