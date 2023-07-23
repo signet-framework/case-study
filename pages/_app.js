@@ -1,6 +1,12 @@
 import "../styles.css";
+import { Nunito } from "next/font/google";
 
-// This default export is required in a new `pages/_app.js` file.
+const nunito = Nunito({ subsets: ["latin"] });
+
 export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <main className={nunito.className}>
+      <Component {...pageProps} />
+    </main>
+  );
 }

@@ -3,7 +3,9 @@
 ## Single Source of Truth
 
 A crucial characteristic of Deploy Guard is its **global consistency**, ensuring that running Deploy Guard for the consumer team yields the same results as if the provider team were running it.
+**[NTD: This reads as running deploy guard for either participant of an integration should yield the same result. But I don't think that is right because then the provider would never be able to deploy. Chicken and egg kinda thing.]**
 Without global consistency, teams must face the challenge of resolving conflicts in Deploy Guard results.
+
 Deploy Guard's results depend on the definitions of both the consumer contract and the provider specification.
 Consequently, global consistency can only be achieved if Deploy Guard reads the documents from a **central repository**.
 Reading documents from individual repositories of the consumer and provider teams introduces the risk of unsynchronized documents, leading to conflicting results in Deploy Guard.
