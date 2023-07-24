@@ -9,7 +9,7 @@ While we have successfully addressed this problem for the provider side through 
 One option we considered is to replicate the approach used for the provider side.
 Essentially, we'll shift the responsibility of writing the contract onto the developer and offer consumer verification as a Signet feature.
 However, we quickly realized that there is no practical benefit to writing a Pact file by hand.
-In contrast, for OpenAPI specifications, designing and writing the specification by hand allows for collaboration, a key component of spec-driven development.
+In contrast, for OpenAPI Specifications, designing and writing the specification by hand allows for collaboration, a key component of spec-driven development.
 As collaboration is not beneficial for consumer contracts, we decided that automating the consumer contract generation is more productive for the developer.
 
 ## Approach 2: Generate Consumer Contract
