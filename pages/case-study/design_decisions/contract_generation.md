@@ -12,7 +12,7 @@ However, we quickly realized that there is no practical benefit to writing a Pac
 In contrast, for OpenAPI Specifications, designing and writing the specification by hand allows for collaboration, a key component of spec-driven development.
 As collaboration is not beneficial for consumer contracts, we decided that automating the consumer contract generation is more productive for the developer.
 
-## Approach 2: Generate Consumer Contract
+## Generate Consumer Contract
 
 Before considering any implementations of this approach, we assumed that teams are already performing consumer service tests that involve sending HTTP requests to a mock provider.
 In other words, their testing infrastructure has already configured a mocking service.
