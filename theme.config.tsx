@@ -1,5 +1,6 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
+import { useRouter } from 'next/router'
 
 const config: DocsThemeConfig = {
   logo: (<>
@@ -17,6 +18,23 @@ const config: DocsThemeConfig = {
   },
   feedback: {
     content: null
+  },
+  head: (
+    <>
+      <link rel="icon" type="image/ico" href={"/signet-favicon-transparent.ico"} />
+    </>
+  ),
+  useNextSeoProps() {
+    const { asPath } = useRouter()
+    if (asPath !== '/') {
+      return {
+        titleTemplate: '%s - Signet'
+      }
+    } else {
+      return {
+        title: 'Signet Framework'
+      }
+    }
   }
 }
 
