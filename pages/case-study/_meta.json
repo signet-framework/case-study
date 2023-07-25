@@ -2,5 +2,5 @@
   "background": "Background",
   "contract_testing": "Contract Testing",
   "signet_framework": "Signet Framework",
-  "design_decisions": "Design Decisions"
+  "design-decisions": "Design Decisions"
 }

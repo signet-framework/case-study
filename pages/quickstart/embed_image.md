@@ -3,9 +3,9 @@
 Store images in the assets folder and then embed them using normal markdown syntax.
 
 ```markdown
-![](../../assets/example_diagram.png)
+![](../../assets/signet-architecture.png)
 ```
 
 Renders as:
 
-![](../../assets/example_diagram.png)
+![](../../assets/signet-architecture.png)
