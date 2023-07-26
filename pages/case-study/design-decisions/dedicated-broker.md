@@ -2,16 +2,15 @@
 
 ## Single Source of Truth
 
-A crucial characteristic of Deploy Guard is its **global consistency**, the assurance that running Deploy Guard yields the same results independent of the context from which it is run.
+A crucial characteristic of Deploy Guard is its **global consistency**, the assurance that running Deploy Guard yields consistent results, independent of the context from which it is executed.
 Without global consistency, teams face the challenge of resolving conflicting and unreliable Deploy Guard results.
 
 ### Central Document Repository
 
-In addition to an up-to-date awareness of deployment states, Deploy Guard's results depend on the definitions of both the consumer contract and the provider specification.
-Reading documents from individual repositories of the consumer and provider teams introduces the risk of unsynchronized documents, leading to conflicting results in Deploy Guard.
+In addition to having an up-to-date awareness of deployment states, Deploy Guard's results depend on the definitions of both the consumer contract and the provider specification.
+As a consequence, reading documents from individual repositories of the consumer and provider teams introduces the risk of unsynchronized documents, leading to conflicting results in Deploy Guard.
 
-Consequently, global consistency can only be guaranteed if Deploy Guard reads the documents from a **central repository**.
-While an online version control system such as Github[^1] could serve as a central repository, we decided that developing a dedicated broker would be a more suitable approach as it allows us to provide features specific to contract testing.
+To ensure global consistency, it is essential that Deploy Guard reads the documents from a central repository. While an online version control system such as Github[^1] could serve as a central repository, we made the decision to develop a dedicated broker. This choice allows us to provide features that are specifically tailored to contract testing.
 
 We will discuss the tradeoffs of this decision in the following sections.
 
@@ -20,10 +19,10 @@ We will discuss the tradeoffs of this decision in the following sections.
 ### Encapsulating Logic
 
 With a dedicated broker, Signet's functionality is no longer confined within the Signet CLI.
-Instead, the broker handles various tasks, including the logic for Deploy Guard.
-This enables automatic fetching of data for documents, and deployment states, of consumer and provider versions.
+Instead, the broker takes on various tasks, including handling the logic for Deploy Guard.
+This advancement enables automatic fetching of data for documents, and deployment states, of consumer and provider versions.
 
-If Github were the central repository, implementing automatic fetching would be challenging, and developers would have to manually provide Deploy Guard with data about documents and deployment states.
+If Github were used as the central repository, developers would be required to manually provide Deploy Guard with data about documents and deployment states. Although the fetching of this data could potentially be automated, the burden of figuring out how to do so would fall on the developer.
 
 ### Automatic Comparison
 
@@ -32,29 +31,22 @@ In contrast, without a dedicated broker, developers must manually compare docume
 
 ### Webhooks
 
-The Signet broker offers webhooks that integrate into the CI/CD pipeline.
-For instance, developers can use Signet webhooks to trigger a provider build and verification whenever a new specification is published.
-While Github also provides webhooks, setting them up for these events requires more involvement and effort.
-
-### Data Visualization and Querying
-
-The Signet broker provides both graph and table representations for data visualization and filtering.
-This enables developers to swiftly identify service dependencies and find comparison results or documents for specific consumer or provider versions.
-In contrast, using Github alone would necessitate relying on third-party software to achieve the same level of functionality.
+The Signet broker offers webhooks, for contract testing events, that integrate into the CI/CD pipeline.
+While Github also provides webhooks, configuring them for events specific to contract testing demands more involvement and effort from developers.
 
 ## The Negatives
 
 ### Lack of Version Control Collaboration
 
 One drawback of using the Signet broker is the absence of version control collaboration.
-With Github, teams can leverage Github's pull request system to collaboratively manage changes on contracts and specifications.
+With Github, teams can leverage Github's pull request system to manage changes on contracts and specifications.
 By treating documents as code, teams can enforce collaboration by requiring approval from other teams for pull requests.
 
-### Management and Maintenance
+### Maintenance and Cost
 
 Many teams are already utilizing Github or some form of version control in their existing workflows.
-Integrating the Signet broker introduces an additional component to their infrastructure, which requires maintenance.
-Using the Signet broker introduces additional costs as teams would have to pay for hosting the Signet broker.
+Integrating the Signet broker introduces an additional component to their infrastructure, necessitating maintenance and management.
+Moreover, adopting the Signet broker incurs additional costs, as teams would be required to cover the expenses of hosting the broker.
 
 ### Vendor Lock-in
 
