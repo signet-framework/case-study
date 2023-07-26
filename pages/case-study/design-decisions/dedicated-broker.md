@@ -8,9 +8,9 @@ Without global consistency, teams face the challenge of resolving conflicting an
 ### Central Document Repository
 
 In addition to having an up-to-date awareness of deployment states, Deploy Guard's results depend on the definitions of both the consumer contract and the provider specification.
-As a consequence, reading documents from individual repositories of the consumer and provider teams introduces the risk of unsynchronized documents, leading to conflicting results in Deploy Guard.
+As a consequence, if Deploy Guard were to read documents separately from the individual repositories of the consumer and provider teams, the risk of having unsynchronized documents between these repositories could lead to conflicting results in Deploy Guard.
 
-To ensure global consistency, it is essential that Deploy Guard reads the documents from a central repository. While an online version control system such as Github[^1] could serve as a central repository, we made the decision to develop a dedicated broker. This choice allows us to provide features that are specifically tailored to contract testing.
+To ensure global consistency, it is imperative for Deploy Guard to access the documents from a **central repository**. While an online version control system such as Github[^1] could serve as a central repository, we made the decision to develop a dedicated broker. This choice allows us to provide features that are specifically tailored to contract testing.
 
 We will discuss the tradeoffs of this decision in the following sections.
 
