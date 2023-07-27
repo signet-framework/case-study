@@ -2,5 +2,6 @@
   "provider-verification": "Provider Verification",
   "dedicated-broker": "Dedicated Broker",
   "contract-generation": "Contract Generation",
+  "cicd-integration": "Automated CI/CD Integration",
   "contract-cardinality": "Contract Cardinality"
 }
