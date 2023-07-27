@@ -1,5 +1,6 @@
 {
   "provider-verification": "Provider Verification",
   "dedicated-broker": "Dedicated Broker",
-  "contract-generation": "Contract Generation"
+  "contract-generation": "Contract Generation",
+  "contract-details": "Contract Details"
 }
