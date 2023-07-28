@@ -11,3 +11,23 @@ main p {
 .footnotes {
   margin-top: 2rem;
 }
+
+article p img {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  /* border: 2px solid white; */
+  /* padding: 3rem; */
+  /* border-radius: 10px; */
+}
+
+/* @media (prefers-color-scheme: dark) {
+  article p img {
+    border: 2px dashed white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  article p img {
+    border: 2px dashed red;
+  }
+} */
