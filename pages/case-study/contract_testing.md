@@ -39,7 +39,7 @@ Another trade-off to consider is that implementing contract testing may require 
 
 ## Evaluating various forms of Contract Testing
 
-There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted. Methodologies are grouped into three categories according on how they determine the details of the contract. We will examine each of them in turn.
+There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted. Methodologies are grouped into three categories according to how they determine the details of the contract. We will examine each of them in turn.
 
 - Consumer-driven - the consumer service is the source of truth
 - Provider-driven - the provider service is the source of truth
@@ -73,7 +73,7 @@ Usually the provider contract comes in the form of an API specification, other t
 
 The main benefit of a provider-driven approach is that it gives the provider team authority over what the integration looks like.
 Whether or not this makes sense depends on the organization and the roles of the services involved.
-One situation where this is appropriate is when the provider has a large number of consumers, and it is impractical for the provider team to negotiate their API will all of them at once.
+One situation where this is appropriate is when the provider has a large number of consumers, and it is impractical for the provider team to negotiate their API with all of them at once.
 
 In a provider-driven model, it is less clear whether contract testing will give the provider team insight into how their API is being consumed. The contract describes what the provider offers, not necessarily how consumers are using it. Provider-driven solutions commonly support the ability for writing consumer-specific test cases in the provider contract, but this demands substantial additional effort.
 
@@ -92,6 +92,9 @@ Neither team needs help from the other to test the integration.
 As long as the both teams require every new version of their service to be tested for conformance to the spec, the deployment cycles of the two services can remain decoupled.
 
 ## Existing Solutions
+
+Companies looking to adopt contract testing have a number of vendors to choose from.
+A brief perusal of these options will highlight the unique attributes that set Signet apart.
 
 ### Pact
 

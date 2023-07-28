@@ -7,7 +7,7 @@ Automated software tests are broadly grouped into three categories:
 - **Unit Tests** - test individual components of a program.
   The subject under test is a single function, class, or some other unit of non-trivial programming logic.
 - **Integration Tests** - test that multiple logical components of the system function correctly together.
-- **End-to-End Tests (E2E)** - exercise full-system workflows as they would occur when triggered in production.
+- **End-to-End Tests (E2E)** - exercise full-system workflows as they would occur in the live application.
 
 Each type of test serves a unique purpose and has a place in a well-balanced test suite.
 A pyramid is often used to illustrate how each type of test relates to the others.
@@ -83,28 +83,12 @@ If it takes longer for developers to become aware that their changes broke somet
 
 Thus, in order to effectively test microservices, we need ways to increase our confidence that the application works correctly as a whole, without compromising the key benefits that lead us to adopting microservices in the first place.
 
-<!-- 
------Original transition:
-
-In practice, what this means is that we want to reduce the number of integration and E2E tests in our CI/CD pipeline, and replace them with faster, cheaper, and more maintainable forms of testing that catch the same kinds of bugs that are covered by our broadly-scoped tests.
-
-**Contract testing** is one alternative testing methodology that supports this goal.
-
-
------Attempt #2
-We have seen that in order to effectively test microservices, we need ways to increase our confidence that the application works correctly as a whole, without compromising the key benefits that lead us to adopting microservices in the first place.
-This can be accomplished by replacing broadly-scoped tests with forms of testing that are faster, cheaper, and more maintainable, while still catching the same kinds of bugs that integration and E2E tests cover. Contract testing is one such alternative. 
-
-
-------Attempt #3
--->
-
 ## The crux of the matter
 
-As we have seen, there are a number of things to consider when testing microservices. We want to have confidence that our services work correctly together.
-But in doing so, we do not want to compromise the benefits of this style of architecture.
+As we have seen, there are a number of things to consider when testing microservices.
+We want to have confidence that our services work correctly together. But in the process of obtaining that confidence, we do not want to compromise the benefits of this style of architecture.
 
-What we need are testing methodologies that catch the same bugs as integration and E2E tests, while maintaining a high degree of independent deployability and clear boundaries of ownership.<!-- (or "high degree of loose-coupling between services." ?) -->
+What we need are testing methodologies that catch the same bugs as integration and E2E tests, while maintaining a high degree of independent deployability and clear boundaries of ownership.
 These tests should also be faster, cheaper, and more maintainable than broadly-scoped tests. Contract testing is one such alternative, and it is there that we will turn our attention next.
 
 [^1]: Sam Newman (Building Microservices - pg. 289)
