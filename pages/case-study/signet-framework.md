@@ -22,7 +22,11 @@ By self-hosting Signet, companies gain complete ownership of their testing envir
 
 Moreover, one of Signet's key strengths lies in its ease of adoption.
 With automatic consumer contract generation, there's no need to write new unit tests, saving on time and resources.
-Further, Signet automatically deploys to AWS with a single command.
+Further, organizations can deploy the Signet broker to their existing AWS cloud with a single command.
+The Signet CLI provisions an ECS Fargate cluster along with all of the necessary supporting infrastructure.
+This deployment strategy makes it easy for teams to scale Signet as needed.
+
+**(maybe) TODO: AWS diagram here?**
 
 Signet makes it easy to adopt contract testing, empowering teams to focus more on delivering features and improvements.
 
@@ -34,7 +38,7 @@ By ensuring that each service aligns with the expected specifications, this appr
 
 ### Core Features
 
-At its core, Signet offers five powerful features that streamline contract testing, facilitate smooth deployments, and provide an optimal testing environment for development teams working with microservices.
+At its core, Signet offers five powerful features that streamline contract testing and enable smooth deployments.
 
 #### Broker in Charge
 
