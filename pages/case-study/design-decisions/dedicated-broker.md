@@ -53,4 +53,9 @@ Moreover, adopting the Signet broker incurs additional costs, as teams would be 
 Using the Signet broker may introduce the risk of vendor lock-in.
 While Signet is open-source and self-hosted, if teams decide to transition to a different contract testing platform in the future, they would need to extract their data from the Signet broker, which could be time-consuming.
 
+## Built to Scale
+
+Throughout the analysis of various tradeoffs, a recurring theme emerges: a dedicated broker offers smoother integration of contract testing-specific features, albeit at the expense of managing an additional component in the existing infrastructure.
+Ultimately, we decided that while an online version control system like Github may be preferable as a short-term solution, a dedicated broker becomes increasingly advantageous as Signet expands its feature set.
+
 [^1]: Other contract testing frameworks (*Karate* and *Specmatic*) have implemented this approach and use Github as their central contract repository.

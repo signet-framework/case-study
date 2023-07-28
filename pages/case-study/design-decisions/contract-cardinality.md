@@ -50,6 +50,6 @@ However, with one specification per consumer, the provider would pass provider v
 This scenario occurs less frequently in microservice architectures with high granularity, as in a fine-grained system, there would be significant overlap in what the consumers require from the provider.
 
 The main downside of this approach is duplication across multiple specifications.
-As we now have multiple sources of truth, inconsistencies in API descriptions may arise between two specifications.
+As we now have multiple sources of truth, inconsistencies in API descriptions may arise between specifications.
 Furthermore, developers must publish a new specification each time a consumer requests additional functionality, even if the provider has already implemented it.
 This is a consequence of the specification lacking awareness of the entire API interface of the provider.

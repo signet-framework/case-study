@@ -1,6 +1,6 @@
 # Contract Generation
 
-At their core, consumer contracts and provider specifications are JSON or YAML files that adhere to a specific schema, which allows them to be written using a text editor.
+At their core, consumer contracts and provider specifications are serialized data (usually JSON or YAML) files that adhere to a specific schema, which allows them to be written using a text editor.
 However, relying on this manual approach introduces the risk of misalignment between the actual service and its corresponding document.
 
 While we addressed the problem of misalignment for the provider side through [provider verification](https://signet-framework.dev/case-study/design-decisions/provider-verification), we now needed to tackle the same challenge for the consumer side.
