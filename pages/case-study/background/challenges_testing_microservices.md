@@ -64,15 +64,15 @@ Ideally, there should be an automated way to validate that the test double is up
 ### Challenges with E2E testing
 
 The difficulties of testing microservices are even greater in the context of E2E testing.
-There are many reasons for this, but we will take a look at two in particular.
+There are many reasons for this, but we will take a look at three in particular.
 
 First, E2E testing requires simulating production conditions as best as possible in a dedicated testing environment.
 This is incredibly challenging with a large number of microservices, as it requires one or more instances of every service in the application to be spun up in the environment.
-Not only is this expensive, it also becomes increasingly difficult to accomplish as the architecture grows.
+Not only is this **expensive**, it also becomes increasingly **difficult to accomplish** as the architecture grows.
 
 In practice, E2E testing may require *multiple* testing environments so that different teams can conduct tests on new versions of their service at the same time.
 
-The second challenge is that E2E tests are slow.
+The second challenge is that **E2E tests are slow**.
 They usually consist of consecutive user interactions and may execute synchronously to ensure repeatability and consistency of state across different test runs.
 E2E tests are especially slow for microservices because services interact through network calls, which are orders of magnitude slower than reading from memory.
 
@@ -81,14 +81,21 @@ E2E tests are especially slow for microservices because services interact throug
 Slow E2E test suites decrease the speed at which new features can be shipped because they slow down the developer feedback loop.
 If it takes longer for developers to become aware that their changes broke something, it takes longer for them to fix it and start the CI/CD process over again.
 
-Thus, in order to effectively test microservices, we need ways to increase our confidence that the application works correctly as a whole, without compromising the key benefits that lead us to adopting microservices in the first place.
+Finally, **E2E tests have a tendency to be flaky** (non-deterministic), meaning that they may occasionally fail even when there is nothing wrong with the code being tested.
+When testing many services together, there are many factors besides the quality of the code that may effect the out come of a test.
+Examples of such factors include network faults, third-party services being unavailable, and application state not being setup or torn down correctly between tests.
+
+> "Non-deterministic tests have two problems, firstly they are useless, secondly they are a virulent infection that can completely ruin your entire test suite."[^2]
+
+Flaky tests not only provide little value when they fail, but they also erode developer's trust in the test suite and promote a culture where it is acceptable to ignore failing tests.
+Where possible, E2E tests should be replaced with more reliable and maintainable tests that will catch the same kinds of bugs.
 
 ## The crux of the matter
 
-As we have seen, there are a number of things to consider when testing microservices.
-We want to have confidence that our services work correctly together. But in the process of obtaining that confidence, we do not want to compromise the benefits of this style of architecture.
+We have seen that in order to effectively test microservices, we need ways to increase our confidence that the application works correctly as a whole, without compromising the key benefits that lead us to adopting microservices in the first place.
 
 What we need are testing methodologies that catch the same bugs as integration and E2E tests, while maintaining a high degree of independent deployability and clear boundaries of ownership.
 These tests should also be faster, cheaper, and more maintainable than broadly-scoped tests. Contract testing is one such alternative, and it is there that we will turn our attention next.
 
 [^1]: Sam Newman (Building Microservices - pg. 289)
+[^2]: Martin Fowler - [Eradicating Non-determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
