@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 969.5 572.58">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        fill: none;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        letter-spacing: 0em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-11, .cls-12, .cls-13, .cls-14, .cls-15 {
+        fill: black;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-11, .cls-12, .cls-13, .cls-14, .cls-15 {
+          fill: white;
+        }
+      }
+
+      .cls-3 {
+        clip-rule: evenodd;
+      }
+
+      .cls-16 {
+        fill: #0cbaff;
+      }
+
+      .cls-16, .cls-12 {
+        font-size: 24px;
+      }
+
+      .cls-16, .cls-12, .cls-15 {
+        font-family: Nunito-Regular, Nunito;
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-17 {
+        letter-spacing: 0em;
+      }
+
+      .cls-18 {
+        letter-spacing: 0em;
+      }
+
+      .cls-19 {
+        letter-spacing: 0em;
+      }
+
+      .cls-20 {
+        letter-spacing: 0em;
+      }
+
+      .cls-21 {
+        letter-spacing: 0em;
+      }
+
+      .cls-22 {
+        letter-spacing: 0em;
+      }
+
+      .cls-23 {
+        letter-spacing: 0em;
+      }
+
+      .cls-13 {
+        opacity: .4;
+      }
+
+      .cls-13, .cls-14 {
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        stroke: black;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-4 {
+          stroke: white;
+        }
+      }
+
+      .cls-4, .cls-5 {
+        stroke-width: 3px;
+      }
+
+      .cls-5 {
+        stroke: #0cbaff;
+      }
+
+      .cls-15 {
+        font-size: 32px;
+      }
+
+      .cls-24 {
+        letter-spacing: 0em;
+      }
+
+      .cls-25 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-26 {
+        letter-spacing: 0em;
+      }
+
+      .cls-27 {
+        letter-spacing: 0em;
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-3" d="m461.03,98.2c-1.4,0-2.53,1.13-2.53,2.53v16.45c0,12.57,9.67,22.94,21.99,24.08v16.19h-9.97c-1.25,0-2.25,1.01-2.25,2.26s1.01,2.26,2.25,2.26h24.45c1.25,0,2.26-1.01,2.26-2.26s-1.01-2.26-2.26-2.26h-9.96v-16.19c12.32-1.14,21.99-11.5,21.99-24.08v-16.45c0-1.4-1.13-2.53-2.53-2.53s-2.54,1.13-2.54,2.53v16.45c0,10.55-8.61,19.13-19.18,19.13s-19.18-8.58-19.18-19.13v-16.45c0-1.4-1.14-2.53-2.54-2.53Zm20.69-28.24c-7.93,0-14.43,6.47-14.43,14.38v34.62c0,7.91,6.49,14.38,14.43,14.38h2.06c7.93,0,14.43-6.47,14.43-14.38v-34.62c0-7.91-6.49-14.38-14.43-14.38h-2.06Z"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="458.5" y="69.96" width="48.5" height="92"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-4" x="1.5" y="77.96" width="220.5" height="127.5" rx="19.12" ry="19.12"/>
+      <text class="cls-15" transform="translate(38.41 131.46)"><tspan class="cls-18" x="0" y="0">Co</tspan><tspan class="cls-21" x="39.26" y="0">n</tspan><tspan x="57.38" y="0">s</tspan><tspan class="cls-26" x="72.77" y="0">u</tspan><tspan x="90.75" y="0">m</tspan><tspan class="cls-19" x="118.14" y="0">e</tspan><tspan class="cls-26" x="135.13" y="0">r</tspan><tspan x="146.62" y="0"> </tspan></text>
+      <text class="cls-15" transform="translate(59.79 170.46)"><tspan class="cls-18" x="0" y="0">S</tspan><tspan x="19.65" y="0">e</tspan><tspan class="cls-25" x="36.67" y="0">r</tspan><tspan x="48.16" y="0">v</tspan><tspan class="cls-18" x="64.64" y="0">i</tspan><tspan class="cls-9" x="72.03" y="0">c</tspan><tspan x="86.91" y="0">e</tspan></text>
+      <rect class="cls-4" x="747" y="77.96" width="221" height="127.5" rx="19.13" ry="19.13"/>
+      <text class="cls-15" transform="translate(759.38 150.46)"><tspan x="0" y="0">P</tspan><tspan class="cls-25" x="20.26" y="0">r</tspan><tspan class="cls-18" x="31.74" y="0">o</tspan><tspan x="49.5" y="0">v</tspan><tspan class="cls-18" x="65.98" y="0">ide</tspan><tspan class="cls-25" x="108.99" y="0">r</tspan><tspan x="120.48" y="0"> </tspan><tspan class="cls-21" x="128.73" y="0">S</tspan><tspan class="cls-26" x="148.35" y="0">tu</tspan><tspan x="177.57" y="0">b</tspan></text>
+      <path class="cls-14" d="m430.03,469.99h54.44c.15,0,.28.13.28.28v4.98c0,.15-.13.27-.28.27h-54.44c-.15,0-.28-.12-.28-.27v-4.98c0-.15.13-.28.28-.28Zm0-13.79h54.44c.15,0,.28.13.28.28v4.98c0,.15-.13.27-.28.27h-54.44c-.15,0-.28-.12-.28-.27v-4.98c0-.15.13-.28.28-.28Zm29.32-13.79h25.13c.15,0,.28.12.28.28v4.97c0,.15-.13.28-.28.28h-25.13c-.15,0-.28-.13-.28-.28v-4.97c0-.15.13-.28.28-.28Zm-25.61-10.11c-.17,0-.31.14-.31.31v11.35c0,.16.14.29.31.3h13.81c.17,0,.3-.13.3-.3v-11.35c0-.16-.13-.31-.3-.31h-13.81Zm25.6-3.68h25.14c.15,0,.28.13.28.28v4.97c0,.15-.13.27-.28.27h-25.13c-.15,0-.28-.12-.28-.27v-4.98c0-.15.13-.27.27-.27Zm-28.78,0h20.17c.44,0,.8.35.8.8v17.73c0,.44-.35.8-.8.8h-20.17c-.44,0-.8-.35-.8-.8v-17.73c0-.44.36-.8.8-.8Zm43.39-39.71c-.1.04-.18.14-.18.28v24.76c0,.46.38.84.84.84h24.68c.27,0,.4-.32.21-.51l-25.22-25.3c-.09-.09-.22-.11-.32-.07Zm-58.6-.44c-.46,0-.84.38-.84.84v109.32c0,.46.38.83.84.83h83.81c.46,0,.84-.37.84-.83v-79.86c0-.16-.13-.3-.3-.3h-28.77c-.46,0-.84-.38-.84-.85v-28.86c0-.16-.13-.3-.3-.3h-54.45Z"/>
+      <polygon class="cls-14" points="260 99.68 319.88 99.68 319.88 79.96 357 108.96 319.88 137.96 319.88 118.24 260 118.24 260 99.68"/>
+      <polygon class="cls-13" points="357 165.68 297.12 165.68 297.12 145.96 260 174.96 297.12 203.96 297.12 184.24 357 184.24 357 165.68"/>
+      <polygon class="cls-13" points="612 99.68 672.38 99.68 672.38 79.96 709.5 108.96 672.38 137.96 672.38 118.24 612 118.24 612 99.68"/>
+      <polygon class="cls-14" points="709.5 165.68 649.12 165.68 649.12 145.96 612 174.96 649.12 203.96 649.12 184.24 709.5 184.24 709.5 165.68"/>
+      <path class="cls-11" d="m447.81,369.34l6.69,18.98,11.17-16.74-17.86-2.24Zm7.33-10.19l-1.5,11.91,5.95.75,1.5-11.91-5.95-.75Zm2.99-23.81l-1.5,11.91,5.95.75,1.5-11.91-5.95-.75Zm2.99-23.81l-1.5,11.91,5.95.75,1.5-11.91-5.95-.75Zm2.99-23.81l-1.5,11.91,5.95.75,1.5-11.91-5.95-.75Zm2.99-23.81l-1.5,11.91,5.95.75,1.5-11.91-5.95-.75Zm2.99-23.81l-1.5,11.91,5.95.75,1.5-11.91-5.95-.75Z"/>
+      <rect class="cls-5" x="394.5" y="42.96" width="180" height="197.5" rx="15.61" ry="15.61"/>
+      <g class="cls-6">
+        <g class="cls-2">
+          <image width="204" height="384" transform="translate(458.26 69.95) scale(.24)" xlink:href="data:image/png;base64,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"/>
+        </g>
+      </g>
+      <text class="cls-12" transform="translate(415.74 204.46)"><tspan x="0" y="0">S</tspan><tspan class="cls-8" x="14.76" y="0">ig</tspan><tspan x="34.49" y="0">ne</tspan><tspan class="cls-17" x="60.89" y="0">t</tspan><tspan class="cls-8" x="69.26" y="0" xml:space="preserve"> P</tspan><tspan class="cls-10" x="90.74" y="0">ro</tspan><tspan class="cls-27" x="112.73" y="0">xy</tspan></text>
+      <text class="cls-12" transform="translate(242.67 20.46)"><tspan x="0" y="0">Se</tspan><tspan class="cls-24" x="27.53" y="0">r</tspan><tspan x="36.14" y="0">v</tspan><tspan class="cls-8" x="48.5" y="0">i</tspan><tspan x="54.12" y="0">ce</tspan><tspan class="cls-9" x="78" y="0"> </tspan><tspan class="cls-23" x="84.24" y="0">t</tspan><tspan x="92.61" y="0">e</tspan><tspan class="cls-23" x="105.38" y="0">st</tspan><tspan x="125.28" y="0"> </tspan></text>
+      <text class="cls-12" transform="translate(261.92 49.46)"><tspan class="cls-24" x="0" y="0">r</tspan><tspan x="8.62" y="0">eq</tspan><tspan class="cls-24" x="35.38" y="0">u</tspan><tspan x="48.86" y="0">e</tspan><tspan class="cls-17" x="61.63" y="0">s</tspan><tspan x="73.15" y="0">ts</tspan></text>
+      <text class="cls-12" transform="translate(402.18 536.96)"><tspan class="cls-17" x="0" y="0">C</tspan><tspan class="cls-7" x="16.13" y="0">on</tspan><tspan class="cls-22" x="43.1" y="0">s</tspan><tspan class="cls-24" x="54.6" y="0">u</tspan><tspan class="cls-22" x="68.09" y="0">m</tspan><tspan class="cls-17" x="88.58" y="0">e</tspan><tspan x="101.33" y="0">r</tspan></text>
+      <text class="cls-12" transform="translate(410.99 565.96)"><tspan class="cls-17" x="0" y="0">C</tspan><tspan x="16.13" y="0">on</tspan><tspan class="cls-17" x="43.1" y="0">t</tspan><tspan class="cls-24" x="51.48" y="0">r</tspan><tspan class="cls-7" x="60.1" y="0">act</tspan></text>
+      <text class="cls-12" transform="translate(635.5 230.96)"><tspan x="0" y="0">S</tspan><tspan class="cls-17" x="14.76" y="0">t</tspan><tspan class="cls-24" x="23.14" y="0">u</tspan><tspan x="36.62" y="0">b</tspan></text>
+      <text class="cls-12" transform="translate(602.31 259.96)"><tspan class="cls-20" x="0" y="0">R</tspan><tspan class="cls-17" x="16.01" y="0">e</tspan><tspan class="cls-20" x="28.75" y="0">s</tspan><tspan x="40.25" y="0">p</tspan><tspan class="cls-24" x="54.24" y="0">o</tspan><tspan x="67.61" y="0">n</tspan><tspan class="cls-22" x="81.24" y="0">s</tspan><tspan class="cls-23" x="92.73" y="0">e</tspan><tspan class="cls-27" x="105.48" y="0">s</tspan></text>
+      <text class="cls-16" transform="translate(494.37 330.96)"><tspan class="cls-20" x="0" y="0">G</tspan><tspan class="cls-17" x="17.38" y="0">e</tspan><tspan x="30.12" y="0">n</tspan><tspan class="cls-23" x="43.75" y="0">e</tspan><tspan class="cls-24" x="56.5" y="0">ra</tspan><tspan class="cls-7" x="77.86" y="0">t</tspan><tspan class="cls-17" x="86.25" y="0">e</tspan><tspan x="99" y="0">s</tspan></text>
+    </g>
+  </g>
+</svg>

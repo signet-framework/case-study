@@ -18,6 +18,8 @@ In a **microservice architecture**, the application is split up into *independen
 A **service** can be thought of as a standalone unit of software that encapsulates its own logic.
 A service exposes an interface so that other services or applications can consume its functionality through messages sent over the network.
 
+![](../../../assets/robots.svg)
+
 ### Benefits of Microservices
 
 Well-designed microservices enable high scalability, while also allowing teams to ship new features quickly.

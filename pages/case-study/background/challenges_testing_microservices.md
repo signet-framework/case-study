@@ -12,9 +12,7 @@ Automated software tests are broadly grouped into three categories:
 Each type of test serves a unique purpose and has a place in a well-balanced test suite.
 A pyramid is often used to illustrate how each type of test relates to the others.
 
-**TODO: Replace with final diagram**
-
-![Alt text](./image.png)
+![Testing pyramid](../../../assets/testing_pyramid.svg)
 
 Tests which are higher on the pyramid have a broader scope and provide more confidence that the system works correctly.
 However, broadly-scoped tests take longer to run, and do less to pinpoint the exact cause of a failure.
@@ -97,5 +95,5 @@ We have seen that in order to effectively test microservices, we need ways to in
 What we need are testing methodologies that catch the same bugs as integration and E2E tests, while maintaining a high degree of independent deployability and clear boundaries of ownership.
 These tests should also be faster, cheaper, and more maintainable than broadly-scoped tests. Contract testing is one such alternative, and it is there that we will turn our attention next.
 
-[^1]: Sam Newman (Building Microservices - pg. 289)
-[^2]: Martin Fowler - [Eradicating Non-determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
+[^1]: Sam Newman, Building Microservices 289 (2nd ed. 2021).
+[^2]: Martin Fowler, [Eradicating Non-determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html).
