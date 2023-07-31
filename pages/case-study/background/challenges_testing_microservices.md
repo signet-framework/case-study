@@ -12,7 +12,7 @@ Automated software tests are broadly grouped into three categories:
 Each type of test serves a unique purpose and has a place in a well-balanced test suite.
 A pyramid is often used to illustrate how each type of test relates to the others.
 
-**TODO: This is a placeholder:**
+**TODO: Replace with final diagram**
 
 ![Alt text](./image.png)
 
@@ -56,7 +56,7 @@ To address this problem, integration tests can be replaced with **service tests*
 The **test double** receives requests from the service being tested and sends back a canned response.
 This enables a team to test the integration of their service with another, without actually spinning up the other service.
 
-TODO: maybe diagram
+TODO: Integration vs Service test diagram
 
 However, service tests only work as long as the real provider's interface does not change; if the provider service changes, the test double needs to be updated as well.
 Ideally, there should be an automated way to validate that the test double is up to date with the real service it represents.
@@ -81,9 +81,9 @@ E2E tests are especially slow for microservices because services interact throug
 Slow E2E test suites decrease the speed at which new features can be shipped because they slow down the developer feedback loop.
 If it takes longer for developers to become aware that their changes broke something, it takes longer for them to fix it and start the CI/CD process over again.
 
-Finally, **E2E tests have a tendency to be flaky** (non-deterministic), meaning that they may occasionally fail even when there is nothing wrong with the code being tested.
-When testing many services together, there are many factors besides the quality of the code that may effect the outcome of a test.
-Examples of such factors include network faults, third-party services being unavailable, and application state being setup or torn down incorrectly between tests.
+Finally, **E2E tests have a tendency to be flaky**, meaning that they may fail even when there is nothing wrong with the code being tested.
+A classic indicator of this is when back-to-back test runs yield different results, even when the code has not changed.
+Inconsistent test results can be caused by network faults, third-party services being unavailable, and application state being setup or torn down incorrectly between tests.
 
 > "Non-deterministic tests have two problems, firstly they are useless, secondly they are a virulent infection that can completely ruin your entire test suite."[^2]
 
