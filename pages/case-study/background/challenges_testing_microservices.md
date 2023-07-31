@@ -4,10 +4,10 @@
 
 Automated software tests are broadly grouped into three categories:
 
-- **Unit Tests** - test individual components of a program.
+- **Unit Tests** - Test individual components of a program.
   The subject under test is a single function, class, or some other unit of non-trivial programming logic.
-- **Integration Tests** - test that multiple logical components of the system function correctly together.
-- **End-to-End Tests (E2E)** - exercise full-system workflows as they would occur in the live application.
+- **Integration Tests** - Test that multiple logical components of the system function correctly together.
+- **End-to-End Tests (E2E)** - Exercise full-system workflows as they would occur in the live application.
 
 Each type of test serves a unique purpose and has a place in a well-balanced test suite.
 A pyramid is often used to illustrate how each type of test relates to the others.
@@ -83,7 +83,7 @@ If it takes longer for developers to become aware that their changes broke somet
 
 Finally, **E2E tests have a tendency to be flaky**, meaning that they may fail even when there is nothing wrong with the code being tested.
 A classic indicator of this is when back-to-back test runs yield different results, even when the code has not changed.
-Inconsistent test results can be caused by network faults, third-party services being unavailable, and application state being setup or torn down incorrectly between tests.
+Inconsistent test results can be caused by network faults, third-party services being unavailable, and application state being set up or torn down incorrectly between tests.
 
 > "Non-deterministic tests have two problems, firstly they are useless, secondly they are a virulent infection that can completely ruin your entire test suite."[^2]
 
