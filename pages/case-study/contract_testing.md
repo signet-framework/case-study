@@ -5,8 +5,6 @@ The test relies on a document known as a **contract** that formally describes th
 
 Both services are individually tested to ensure that they conform to the contract.
 The test fails if either service does not conform, indicating that the two services will not integrate correctly.
-<!-- This stands in stark contrast to integration testing, which requires both services to be deployed to the same environment to perform the test. -->
-<!--can we drop this sentence if we have a diagram showing both integration and contract testing side-by-side?-->
 
 **TODO: diagram here illustrating an integration test**
 
@@ -39,20 +37,20 @@ Another trade-off to consider is that implementing contract testing may require 
 
 ## Evaluating various forms of Contract Testing
 
-There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted. Methodologies are grouped into three categories according on how they determine the details of the contract. We will examine each of them in turn.
+There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted. Methodologies are grouped into three categories according to how they determine the details of the contract. We will examine each of them in turn.
 
-- Consumer-driven - the consumer service is the source of truth
-- Provider-driven - the provider service is the source of truth
-- Spec-driven - the source of truth is independent of either service's implementation
+- Consumer-driven - The consumer service is the source of truth.
+- Provider-driven - The provider service is the source of truth.
+- Spec-driven - The source of truth is independent of either service's implementation.
 
 ### Consumer-driven
 
 In consumer-driven contract testing, the consumer service is implemented first.
 After the consumer team has implemented their side of the integration, they use unit tests to generate a consumer contract, which describes the expectations that the consumer service has of the provider service.
 The consumer contract is then handed over to the provider team and they implement the provider's API to satisfy the needs of the consumer.
-After the provider API is implemented, the requests in the contract are *replayed* against the API (a processed known as **provider verification**) and the responses are compared with those specified in the contract. If the provider service sends the correct response for each request, the test passes.
+After the provider API is implemented, the requests in the contract are *replayed* against the API (a process known as **provider verification**) and the responses are compared with those specified in the contract. If the provider service sends the correct response for each request, the test passes.
 
-A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API is being used by the consumer.
+A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API are being used by the consumer.
 This gives the provider team insight into how they can evolve their API without breaking any consumers.
 
 <!-- maybe also discuss the business requirements component -->
@@ -73,7 +71,7 @@ Usually the provider contract comes in the form of an API specification, other t
 
 The main benefit of a provider-driven approach is that it gives the provider team authority over what the integration looks like.
 Whether or not this makes sense depends on the organization and the roles of the services involved.
-One situation where this is appropriate is when the provider has a large number of consumers, and it is impractical for the provider team to negotiate their API will all of them at once.
+One situation where this is appropriate is when the provider has a large number of consumers, and it is impractical for the provider team to negotiate their API with all of them at once.
 
 In a provider-driven model, it is less clear whether contract testing will give the provider team insight into how their API is being consumed. The contract describes what the provider offers, not necessarily how consumers are using it. Provider-driven solutions commonly support the ability for writing consumer-specific test cases in the provider contract, but this demands substantial additional effort.
 
@@ -93,6 +91,8 @@ As long as the both teams require every new version of their service to be teste
 
 ## Existing Solutions
 
+Companies looking to adopt contract testing have a number of existing solutions to choose from. A brief perusal of these options will highlight the unique attributes that set Signet apart.
+
 ### Pact
 
 Pact is the most well-known open-source option for contract testing.
@@ -107,7 +107,7 @@ We see two main challenges with Pact. The fact that it only works with a consume
 ### PactFlow
 
 The original creators of Pact have more recently come out with a paid Software-as-a-Service (SaaS) product called PactFlow.
-PactFlow builds on the foundation of Pact to provided a service they call "bidirectional" contract testing.
+PactFlow builds on the foundation of Pact to provide a service they call "bidirectional" contract testing.
 Bidirectional supports both spec-driven and provider-driven models by allowing the provider's API spec to be published before or after it has been tested against the provider service.
 
 While PactFlow significantly improves upon the flexibility of Pact, it still requires substantial effort to add contract testing into the CI/CD workflow.

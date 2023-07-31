@@ -1,7 +1,7 @@
 # Introduction
 
 **Signet** is an open-source contract testing framework for microservices.
-It promotes spec-first API design, and enables teams to build microservices in parallel with the confidence that they will be compatible when deployed.
+It promotes spec-first API design, and enables teams to build services in parallel with the confidence that they will be compatible when deployed.
 
 Signet is designed for rapidly-scaling applications that want to introduce contract testing with minimal cost and configuration.
 
