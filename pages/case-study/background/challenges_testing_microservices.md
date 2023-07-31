@@ -82,8 +82,8 @@ Slow E2E test suites decrease the speed at which new features can be shipped bec
 If it takes longer for developers to become aware that their changes broke something, it takes longer for them to fix it and start the CI/CD process over again.
 
 Finally, **E2E tests have a tendency to be flaky** (non-deterministic), meaning that they may occasionally fail even when there is nothing wrong with the code being tested.
-When testing many services together, there are many factors besides the quality of the code that may effect the out come of a test.
-Examples of such factors include network faults, third-party services being unavailable, and application state not being setup or torn down correctly between tests.
+When testing many services together, there are many factors besides the quality of the code that may effect the outcome of a test.
+Examples of such factors include network faults, third-party services being unavailable, and application state being setup or torn down incorrectly between tests.
 
 > "Non-deterministic tests have two problems, firstly they are useless, secondly they are a virulent infection that can completely ruin your entire test suite."[^2]
 
