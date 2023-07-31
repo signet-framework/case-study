@@ -14,6 +14,12 @@ It also eliminates the need for complex DIY solutions, making setting up contrac
 With its spec-driven design, Signet provides an efficient and standardized testing approach for development teams.
 It promotes seamless collaboration, early issue detection, and reliability, making it ideal for fostering growth and dependability in microservices.
 
+## Comparing Signet to other Spec-driven Solutions
+
+The spec-driven approach protects independent deployability. Below, you'll find a brief breakdown comparing Signet, Pactflow, and Specmatic, three spec-driven contract testing solutions.
+
+**diagram**
+
 ## Key Advantages and Core Features
 
 Signet offers several key advantages compared to other solutions.
@@ -40,12 +46,12 @@ By ensuring that each service aligns with the expected specifications, this appr
 
 At its core, Signet offers five powerful features that streamline contract testing and enable smooth deployments.
 
-#### Broker in Charge
+#### Dedicated Broker
 
 Signet's dedicated broker simplifies the testing process by providing essential logic and features, eliminating the need to build them from scratch.
 The Signet broker ensures a reliable and efficient environment for contract testing by automatically testing consumer and provider services for compatibility.
 
-#### Boosted Development with Automated Contract Generation
+#### Automated Consumer Contract Generation
 
 The manual creation of consumer contracts can be a time-consuming and error-prone process.
 Signet's automated consumer contract generation saves developers time and effort by generating contracts from existing unit tests.
@@ -57,12 +63,12 @@ Signet easily integrates with automated CI/CD pipelines through its user-friendl
 The Signet broker also provides event-based webhooks, allowing two-way communication throughout the release cycle.
 Together, these features make Signet a straightforward choice for adding contract testing to automated workflows.
 
-#### Enhanced Confidence through Provider Verification
+#### Provider Verification
 
 In addition to testing that consumer services are compatible with provider specifications, Signet goes one step further and automatically tests whether provider services properly implement their API specifications.
 This provider verification process gives teams greater confidence that their services will work together as expected when deployed.
 
-#### Deploy Smarter with Deploy Guard
+#### Deploy Guard
 
 Ensuring a smooth transition when rolling out a new service requires careful consideration of **compatibility with other services** within the same environment.
 
@@ -71,3 +77,4 @@ Deploy Guard checks that all of the service's external dependencies are present 
 It also ensures that the new service won't break any services that rely on it.
 
 The best part is that Deploy Guard is also available through the CLI, enabling the CI/CD pipeline to proactively prevent the introduction of any breaking changes.
+
