@@ -8,10 +8,6 @@ The test fails if either service does not conform, indicating that the two servi
 
 **TODO: diagram here illustrating an integration test**
 
-**TODO: diagram here illustrating a contract test**
-
-**Q: should these be one side-by-side diagram?**
-
 ## Benefits of Contract Testing
 
 Contract tests relieve the burden of having to deploy multiple services together for integration testing.
@@ -28,7 +24,7 @@ Because each interaction (e.g. an HTTP request and response pair) is enumerated 
 
 While contract tests reduce the need for broadly-scoped tests, they do not replace them entirely.
 E2E tests provide a high degree of confidence because they try to mimic production conditions to the greatest extent possible.
-Contract tests have a more narrow focus--to test the compatibility of interfaces and catch breaking changes quickly.
+Contract tests have a more narrow focus—to test the compatibility of interfaces and catch breaking changes quickly.
 Contract tests do not replicate production conditions such as latency, service unavailability, and high amounts of load.
 
 Instead, contract tests reduce the *quantity* of broadly-scoped tests that an application needs. Ideally, these tests can even be moved out of the CI/CD pipeline, and run in a periodic manner that is decoupled from the deployment life-cycle of any given team.
@@ -53,15 +49,13 @@ After the provider API is implemented, the requests in the contract are *replaye
 A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API are being used by the consumer.
 This gives the provider team insight into how they can evolve their API without breaking any consumers.
 
-<!-- maybe also discuss the business requirements component -->
-
 On the other hand, the consumer-driven approach has a critical drawback. It undermines independent deployability for consumer services.
 After generating the consumer contract, the consumer team must wait for the provider team to pull down the contract, spin up their service, and verify that it correctly implements the consumer's requirements.
 Only if the provider passes verification can the consumer team proceed to deploying their service.
 In the event that provider verification fails, either the consumer team must fix the issue and start the process over again, or they must wait for the provider team to update their API to satisfy the contract.
 
 In either case, the provider team must be involved any time the consumer team wants to deploy a new version of their service.
-Taking into account that microservices may have multiple external dependencies, consumer-driven contract testing requires significant cross-team coordination--placing a severe limitation on how quickly new software can be deployed.
+Taking into account that microservices may have multiple external dependencies, consumer-driven contract testing requires significant cross-team coordination — placing a severe limitation on how quickly new software can be deployed.
 
 ### Provider-driven
 
@@ -126,8 +120,21 @@ Although Karate does not use unit tests to generate a consumer contract, develop
 
 Specmatic is an open-source offering for spec-driven contract testing.
 A key feature of Specmatic is that it offers a way to generate the contract by automatically recording the interactions between the consumer and provider service.
-This means that contract testing can be achieved with a significantly smaller startup cost--there is no need to write new unit tests to get up and running.
+This means that contract testing can be achieved with a significantly smaller startup cost — there is no need to write new unit tests to get up and running.
 
-Another characteristic of Specmatic is that it does not use a broker--contracts are stored in version control instead.
+Another characteristic of Specmatic is that it does not use a broker — contracts are stored in version control instead.
 While this comprises a simple solution for managing contracts, it loses out on some useful features that a broker can provide.
 For instance, in order for a CI/CD pipeline to automatically gate a deployment based on what is currently deployed, significant effort must be expended to DIY this capability.
+
+## A Need for a New Solution
+
+**TODO: existing solution diagram**
+
+Existing solutions offer clear trade-offs in terms of contract testing approach and feature set.
+A recurring theme among many of them is that adopting contract testing is costly, requiring significant investment in writing new unit tests.
+
+Other solutions also stop short of answering the ultimate question developers ask when adopting contract testing: will this service integrate properly with other services in a given environment?
+Broker-less solutions require teams to build this capability from scratch, as they lack awareness of what service versions are currently deployed.
+
+There are also a limited number of open-source solutions that offer a spec-driven approach.
+A spec-driven model is highly desirable since it maximizes independent deployability and naturally aligns with a spec-first approach to API design.

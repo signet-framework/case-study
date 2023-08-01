@@ -1,73 +1,54 @@
 # Introducing Signet
 
-As small companies experience growth, maintaining a scalable and reliable microservices architecture becomes crucial.
-Development teams working on interdependent microservices need a robust contract testing framework to ensure API compatibility and effective collaboration.
+**Signet** is an open-source, self-hosted framework for spec-driven contract testing of microservices.
 
-Signet is an open-source, self-hosted framework for spec-driven contract testing that addresses these challenges.
+It is designed for small, rapidly scaling companies experiencing the challenges that come with integration and E2E testing.
+Getting started with Signet requires minimal upfront costs, eliminating the need to write new unit tests.
+Its feature set answers the fundamental question that drives teams to adopt contract testing: will something break if I deploy this new version of my service?
 
-## Contract Testing, Simplified
+**TODO: diagram**
 
-Signet is designed for small startups looking to scale their operations with microservices.
-As a self-hosted option, it helps companies save on managed service costs.
-It also eliminates the need for complex DIY solutions, making setting up contract testing much simpler.
+## Core Features
 
-With its spec-driven design, Signet provides an efficient and standardized testing approach for development teams.
-It promotes seamless collaboration, early issue detection, and reliability, making it ideal for fostering growth and dependability in microservices.
+### Spec-driven Model
 
-## Key Advantages and Core Features
-
-Signet offers several key advantages compared to other solutions.
-Being open-source and self-hosted, developers can directly review and contribute to its source code, providing customization and flexibility for small companies.
-By self-hosting Signet, companies gain complete ownership of their testing environment and data, ensuring full control and easy integration with their existing infrastructure.
-
-Moreover, one of Signet's key strengths lies in its ease of adoption.
-With automatic consumer contract generation, there's no need to write new unit tests, saving on time and resources.
-Further, organizations can deploy the Signet broker to their existing AWS cloud with a single command.
-The Signet CLI provisions an ECS Fargate cluster along with all of the necessary supporting infrastructure.
-This deployment strategy makes it easy for teams to scale Signet as needed.
-
-**(maybe) TODO: AWS diagram here?**
-
-Signet makes it easy to adopt contract testing, empowering teams to focus more on delivering features and improvements.
-
-### Accelerating Development with Spec-Driven Contract Testing
-
-Adopting a spec-driven approach offers significant advantages.
-Spec-driven contract testing promotes **parallel development**, allowing multiple teams to work independently on different microservices.
+A core value of Signet is maximizing the independent deployability of services.
+For that reason, Signet uses a spec-driven approach to contract testing, where the details of the integration are defined first in an API spec.
+Establishing the contract ahead of time enables parallel development, where multiple teams can work concurrently on different microservices.
 By ensuring that each service aligns with the expected specifications, this approach accelerates the overall development process, enabling companies to rapidly deliver new features and updates.
 
-### Core Features
+### Open-source
 
-At its core, Signet offers five powerful features that streamline contract testing and enable smooth deployments.
+Signet is open-source, allowing developers to directly modify and extend the framework according to their specific needs.
+This enables valuable customization and flexibility for small companies.
+By self-hosting Signet, companies don't need to pay for another managed service, maintain complete ownership of their data, and retain control of their testing infrastructure.
 
-#### Broker in Charge
+### Easy to Adopt
 
-Signet's dedicated broker simplifies the testing process by providing essential logic and features, eliminating the need to build them from scratch.
-The Signet broker ensures a reliable and efficient environment for contract testing by automatically testing consumer and provider services for compatibility.
+One of Signet's key strengths lies in its ease of adoption.
+It offers the ability to leverage existing service tests to **automatically generate the consumer contract**.
+This saves companies from the time-consuming and error-prone processes of writing new unit tests to get started with contract testing.
 
-#### Boosted Development with Automated Contract Generation
+Signet also offers built-in support for **provider verification**.
+While some spec-driven solutions require companies to wire up their own tool, Signet offers this feature out of the box.
+Signet uses the API spec to generate tests that verify that the provider correctly implements the spec.
 
-The manual creation of consumer contracts can be a time-consuming and error-prone process.
-Signet's automated consumer contract generation saves developers time and effort by generating contracts from existing unit tests.
-This non-code invasive approach enables effortless integration into existing systems.
+Moreover, organizations can deploy the Signet broker to their existing AWS cloud with a single command.
+The Signet CLI provisions an ECS Fargate cluster along with all of the necessary supporting infrastructure.
+This deployment strategy makes it simple to set up Signet and scale its capacity as needed.
 
-#### Streamlined CI/CD Integration
+### Dedicated Broker
 
-Signet easily integrates with automated CI/CD pipelines through its user-friendly command line interface (CLI).
-The Signet broker also provides event-based webhooks, allowing two-way communication throughout the release cycle.
-Together, these features make Signet a straightforward choice for adding contract testing to automated workflows.
+Rather than storing contracts in standard version control, Signet uses a dedicated broker to provide a richer set of features.
 
-#### Enhanced Confidence through Provider Verification
+Testing that a service satisfies a contract is not enough by itself.
+What developers really care about is whether anything will break when a new service version is deployed to an environment.
+This requires the additional step of identifying the current set of relevant contracts, a potentially onerous task that most solutions leave up to the developer.
 
-In addition to testing that consumer services are compatible with provider specifications, Signet goes one step further and automatically tests whether provider services properly implement their API specifications.
-This provider verification process gives teams greater confidence that their services will work together as expected when deployed.
+Signet's **Deploy Guard** feature tracks the deployment of service versions, making it easy to see if a new service is safe to deploy.
+It verifies the presence and compatibility of all of the service's providers in the environment.
+It also ensures that the service won't break any of the consumers that rely on it.
 
-#### Deploy Smarter with Deploy Guard
-
-Ensuring a smooth transition when rolling out a new service requires careful consideration of **compatibility with other services** within the same environment.
-
-Enter Signet's **Deploy Guard**, boasting an intuitive interface that makes it easy to check whether it is safe to deploy a service.
-Deploy Guard checks that all of the service's external dependencies are present in the environment, and that they are compatible.
-It also ensures that the new service won't break any services that rely on it.
-
-The best part is that Deploy Guard is also available through the CLI, enabling the CI/CD pipeline to proactively prevent the introduction of any breaking changes.
+Signet's broker also **integrates with CI/CD pipelines** through webhooks and the Signet CLI.
+CI/CD pipelines can subscribe to receive webhooks from the Signet broker, allowing them to respond to new contract testing events.
+Additionally, the contract testing workflow can be fully automated through the Signet CLI, enabling CI/CD pipelines to gate deployments if they would introduce breaking changes.
