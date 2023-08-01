@@ -9,11 +9,11 @@ While we addressed the problem of misalignment for the provider side through [pr
 
 One option we considered is to replicate the approach used for the provider side.
 Essentially, we would shift the responsibility of writing the contract onto the developer and offer *consumer* verification as a Signet feature.
-However, we quickly realized that while there are benefits to writing OpenAPI specifications by hand, there is little practical benefit to writing a Pact file by hand.
+However, we quickly realized that while there are benefits to writing a provider specification by hand, there is little practical benefit to writing a consumer contract by hand.
 
-For OpenAPI Specifications, designing and writing the specification manually allows for collaboration, which is a key component of [spec-driven development](https://signet-framework.dev/case-study/contract_testing#spec-driven).
-However, consumer contracts do not enjoy the same benefits from collaboration since they are created after implementation.
-Additionally, consumer contracts are more inconvenient to write, as there exists tooling to support writing OpenAPI specifications, but no such tooling exists for writing Pact files.[^1]
+For provider specifications, designing and writing the specification manually allows for collaboration, which is a key component of [spec-driven development](https://signet-framework.dev/case-study/contract_testing#spec-driven).
+However, consumer contracts lack the same benefits from collaboration, since they are created after the consumer is implemented.
+In other words, a provider specification serves as a blueprint, while a consumer contract is merely a snapshot.
 Therefore, we decided that automating the consumer contract generation is more productive for the developer.
 
 ## Generate Consumer Contract
@@ -43,5 +43,3 @@ Also, since there is no recording, we can generate the consumer contract without
 
 The main disadvantage is that the format of the HTTP request and response definitions would differ depending on the mocking service, requiring us to implement individual support for each service.
 As one of our goals was to maximize Signet's compatibility with existing infrastructure, we decided that we would focus on implementing recording as the primary approach.
-
-[^1]: An example of such tooling is SwaggerHub which provides an interactive editor to design OpenAPI specifications.
