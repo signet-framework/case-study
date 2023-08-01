@@ -131,3 +131,15 @@ This means that contract testing can be achieved with a significantly smaller st
 Another characteristic of Specmatic is that it does not use a broker--contracts are stored in version control instead.
 While this comprises a simple solution for managing contracts, it loses out on some useful features that a broker can provide.
 For instance, in order for a CI/CD pipeline to automatically gate a deployment based on what is currently deployed, significant effort must be expended to DIY this capability.
+
+## A Need for a Better Solution
+
+Existing solutions offer clear trade-offs in terms of contract testing approach and feature set.
+A recurring theme among many of them is the large initial cost associated with writing new unit tests.
+There are exceptions to this -- some existing solutions offer the ability to generate a consumer contract from pre-existing service tests.
+However, these options lack the ability to answer the most critical questions that contract testing allows for.
+For example, when preparing to deploy a service, teams only need to determine whether the service is compatible with other services already deployed in the environment.
+Broker-less solutions require teams to construct this capability from scratch as they lack awareness of the currently deployed services.
+
+There are also a limited number of open-source solutions that offer a spec-driven approach.
+A spec-driven model is highly desirable since it maximizes independent deployability and naturally aligns with a spec-first approach to API design.
