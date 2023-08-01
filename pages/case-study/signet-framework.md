@@ -1,10 +1,11 @@
-- our disatisfaction with exiting solutions (transtion in last section)
+<!-- - our disatisfaction with exiting solutions (transtion in last section)
   - most solutions require large start-up cost
   - easy to adopt solutions offer a narrow feature set
     - they don't complete the picture by telling you if your service is safe to deploy
   <!-- - solutions that answer those key questions are paid/managed -->
-  - limited number of open-source spec-driven options (maximize ID)
+  <!-- - limited number of open-source spec-driven options (maximize ID) -->
 
+<!--
 - introducing Signet
 - use case
   - small startups
@@ -33,8 +34,7 @@
 
   - broker (section)
     - deploy guard
-    - ci/cd integration
-
+    - ci/cd integration -->
 
 # Introducing Signet
 
@@ -43,10 +43,12 @@ It is designed for small, rapidly scaling companies experiencing the challenges 
 Getting started with Signet requires minimal overhead, eliminating the need to write new unit tests.
 It's feature set answers the fundamental question that drives teams to adopt contract testing: will something break if I deploy this new version of my service?
 
+**TODO: diagram**
+
                PactFlow    Signet      Specmatic
 spec-driven       y           y            y
 open-source       n           y            y
-managed           y           n            n 
+managed           y           n            n
 easy-to-adopt     n           y            y
 broker            y           y            n
 
@@ -81,38 +83,37 @@ Moreover, organizations can deploy the Signet broker to their existing AWS cloud
 The Signet CLI provisions an ECS Fargate cluster along with all of the necessary supporting infrastructure.
 This deployment strategy makes it simple to set up Signet and scale its capacity as needed.
 
-
-<!--
-
-  - broker (section)
-    - deploy guard
-    - ci/cd integration
--->
-
 ### Dedicated Broker
 
-Rather than storing contracts in version control, Signet uses a dedicated contract broker.
+Rather than storing contracts in version control, Signet uses a dedicated broker to provide a richer set of features.
+
+A broker enables Signet's contract tests to account for current deployments.
+Fundamentally, contract testing only verifies a service against a contract, but this alone is just a starting point.
+This is only useful if we know that the contract is up-to-date with the services that are actually deployed.
+While many existing solutions leave teams to make this connection on their own, Signet effortlessly accounts for everything that is actually deployed.
+
+Signet's **Deploy Guard** feature ensures the safety of deploying a new service by accounting for everything that is already deployed.
+It verifies the presence and compatibility of all of the new service's providers in the environment.
+It also ensures that the new service won't break any of the consumers that rely on it.
+
+Signet's broker also **integrates with CI/CD pipelines** through its intuitive CLI and event-based webhooks. The CLI offers programmatic control over the entire contract testing workflow. Deploy Guard is also accessible through the CLI, enabling CI/CD pipelines to regulate deployments based on the current deployed services.
+The broker can also emit webhooks based on contract testing events, allowing two-way communication throughout the release cycle.
+
+<!--- ci/cd integration
+      - cli
+        - programmatic control of the complete contract testing workflow
+        - including Deploy Guard
+      - webhooks -->
+
+<!-- The best part is that Deploy Guard is also available through the CLI, enabling the CI/CD pipeline to proactively prevent the introduction of any breaking changes.
+
+Signet easily integrates with automated CI/CD pipelines through its user-friendly command line interface (CLI).
+The Signet broker also provides event-based webhooks, allowing two-way communication throughout the release cycle.
+Together, these features make Signet a straightforward choice for adding contract testing to automated workflows. -->
 
 
-<!-- Signet's dedicated broker simplifies the testing process by providing essential logic and features, eliminating the need to build them from scratch.
-The Signet broker ensures a reliable and efficient environment for contract testing by automatically testing consumer and provider services for compatibility. -->
 
-- conformance to contact is not the whole story, it in service of determining whether things will break when deployed to a specific environment
-- Deploy Guard
-- through web interface and cli
-
-Ensuring a smooth transition when rolling out a new service requires careful consideration of **compatibility with other services** within the same environment.
-
-Enter Signet's **Deploy Guard**, boasting an intuitive interface that makes it easy to check whether it is safe to deploy a service.
-Deploy Guard checks that all of the service's external dependencies are present in the environment, and that they are compatible.
-It also ensures that the new service won't break any services that rely on it.
-
-The best part is that Deploy Guard is also available through the CLI, enabling the CI/CD pipeline to proactively prevent the introduction of any breaking changes.
-
-
-
-
-<!-- # Introducing Signet
+<!-- # Introducing Signet 
 
 As small companies experience growth, maintaining a scalable and reliable microservices architecture becomes crucial.
 Development teams working on interdependent microservices need a robust contract testing framework to ensure API compatibility and effective collaboration.
