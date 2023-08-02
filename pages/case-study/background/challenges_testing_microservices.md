@@ -54,7 +54,7 @@ To address this problem, integration tests can be replaced with **service tests*
 The **test double** receives requests from the service being tested and sends back a canned response.
 This enables a team to test the integration of their service with another, without actually spinning up the other service.
 
-TODO: Integration vs Service test diagram
+![Integration test vs service test](../../../assets/trains_1.svg)
 
 However, service tests only work as long as the real provider's interface does not change; if the provider service changes, the test double needs to be updated as well.
 Ideally, there should be an automated way to validate that the test double is up to date with the real service it represents.

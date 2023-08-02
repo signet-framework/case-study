@@ -6,7 +6,7 @@ The test relies on a document known as a **contract** that formally describes th
 Both services are individually tested to ensure that they conform to the contract.
 The test fails if either service does not conform, indicating that the two services will not integrate correctly.
 
-**TODO: diagram here illustrating an integration test**
+![Integration test vs service test vs contract test](../../assets/trains_2.svg)
 
 ## Benefits of Contract Testing
 
@@ -35,9 +35,9 @@ Another trade-off to consider is that implementing contract testing may require 
 
 There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted. Methodologies are grouped into three categories according to how they determine the details of the contract. We will examine each of them in turn.
 
-- Consumer-driven - The consumer service is the source of truth.
-- Provider-driven - The provider service is the source of truth.
-- Spec-driven - The source of truth is independent of either service's implementation.
+- **Consumer-driven** - The consumer service is the source of truth.
+- **Provider-driven** - The provider service is the source of truth.
+- **Spec-driven** - The source of truth is independent of either service's implementation.
 
 ### Consumer-driven
 
@@ -128,7 +128,7 @@ For instance, in order for a CI/CD pipeline to automatically gate a deployment b
 
 ## A Need for a New Solution
 
-**TODO: existing solution diagram**
+![Comparison of existing solutions](../../assets/existing_solutions.svg)
 
 Existing solutions offer clear trade-offs in terms of contract testing approach and feature set.
 A recurring theme among many of them is that adopting contract testing is costly, requiring significant investment in writing new unit tests.
