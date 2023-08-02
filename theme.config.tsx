@@ -24,6 +24,9 @@ const config: DocsThemeConfig = {
       <link rel="icon" type="image/ico" href={"/signet-favicon-transparent.ico"} />
     </>
   ),
+  // sidebar: {
+  //   defaultMenuCollapseLevel: Infinity,
+  // },
   useNextSeoProps() {
     const { asPath } = useRouter()
     if (asPath !== '/') {
