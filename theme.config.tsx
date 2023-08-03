@@ -27,6 +27,14 @@ const config: DocsThemeConfig = {
   // sidebar: {
   //   defaultMenuCollapseLevel: Infinity,
   // },
+  // banner: {
+  //   dismissible: true,
+  //   text: (
+  //     <a href="https://github.com/signet-framework/signet-broker" target="_blank">
+  //       🎉 Signet 1.0 is released. Read more →
+  //     </a>
+  //   )
+  // },
   useNextSeoProps() {
     const { asPath } = useRouter()
     if (asPath !== '/') {

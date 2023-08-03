@@ -2,6 +2,40 @@
 
 Given two services that interact with each other, a **contract test** interrogates each service *in isolation* to see if the two interfaces are compatible with each other.
 The test relies on a document known as a **contract** that formally describes the interactions between the services.
+It does this by enumerating the HTTP requests and responses that each service expects to send and receive.
+
+```json filename="example_contract.json" {8, 10}
+{
+  consumer: {
+    name: "service_1",
+  },
+  provider: {
+    name: "user_service",
+  },
+  interactions: [
+    {
+      description: "a request for the user with a userId of 1",
+      request: {
+        headers: {
+          Accept: "application/json",
+        },
+        method: "GET",
+        path: "/users/1",
+      },
+      response: {
+        body: {
+          userId: 1,
+          username: "mimmy",
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        status: 200,
+      },
+    },
+  ],
+}
+```
 
 Both services are individually tested to ensure that they conform to the contract.
 The test fails if either service does not conform, indicating that the two services will not integrate correctly.
@@ -14,26 +48,29 @@ Contract tests relieve the burden of having to deploy multiple services together
 They build confidence that the services will work correctly together, without requiring both teams to coordinate their testing or know how to run the other team's service.
 
 Not only that, but they also provide much faster feedback than integration and E2E tests.
-Contract tests behave more like unit test or service tests, and can be run quickly, cheaply, and early on in the CI/CD pipeline.
+Contract tests behave more like unit tests or service tests, and can be run quickly, cheaply, and early on in the CI/CD pipeline.
 In fact, they are lightweight enough that a developer could even run them locally before initiating the build processes.
 
 An added benefit of contract tests is that they isolate bugs with more specificity than most integration and E2E tests.
-Because each interaction (e.g. an HTTP request and response pair) is enumerated in the contract, a failing test can report exactly which messages are missing or malformed.
+Because each interaction (*e.g.*, an HTTP request and response pair) is enumerated in the contract, a failing test can report exactly which messages are missing or malformed.
 
-## Drawbacks of Contract Testing
+## Limitations of Contract Testing
 
 While contract tests reduce the need for broadly-scoped tests, they do not replace them entirely.
 E2E tests provide a high degree of confidence because they try to mimic production conditions to the greatest extent possible.
 Contract tests have a more narrow focus—to test the compatibility of interfaces and catch breaking changes quickly.
 Contract tests do not replicate production conditions such as latency, service unavailability, and high amounts of load.
 
-Instead, contract tests reduce the *quantity* of broadly-scoped tests that an application needs. Ideally, these tests can even be moved out of the CI/CD pipeline, and run in a periodic manner that is decoupled from the deployment life-cycle of any given team.
+Instead, contract tests reduce the *quantity* of broadly-scoped tests that an application needs.
+Ideally, broadly-scoped tests can even be moved out of the CI/CD pipeline and run in a periodic manner that is decoupled from the deployment life-cycle of any given team.
 
-Another trade-off to consider is that implementing contract testing may require writing many new tests. Until there is sufficient coverage of a service's interface, that team cannot be confident that accidental breakages will be caught.
+Another trade-off to consider is that implementing contract testing may require **writing many new tests**.
+Until there is sufficient coverage of a service's interface, that team cannot be confident that accidental breakages will be caught.
 
 ## Evaluating various forms of Contract Testing
 
-There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted. Methodologies are grouped into three categories according to how they determine the details of the contract. We will examine each of them in turn.
+There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted.
+Methodologies are grouped into three categories according to how they determine the details of the contract.
 
 - **Consumer-driven** - The consumer service is the source of truth.
 - **Provider-driven** - The provider service is the source of truth.
@@ -44,12 +81,14 @@ There are many approaches to contract testing, and each vendor has a slightly di
 In consumer-driven contract testing, the consumer service is implemented first.
 After the consumer team has implemented their side of the integration, they use unit tests to generate a consumer contract, which describes the expectations that the consumer service has of the provider service.
 The consumer contract is then handed over to the provider team and they implement the provider's API to satisfy the needs of the consumer.
-After the provider API is implemented, the requests in the contract are *replayed* against the API (a process known as **provider verification**) and the responses are compared with those specified in the contract. If the provider service sends the correct response for each request, the test passes.
+After the provider API is implemented, the requests in the contract are *replayed* against the API (a process known as **provider verification**) and the responses are compared with those specified in the contract.
+If the provider service sends the correct response for each request, the test passes.
 
 A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API are being used by the consumer.
 This gives the provider team insight into how they can evolve their API without breaking any consumers.
 
-On the other hand, the consumer-driven approach has a critical drawback. It undermines independent deployability for consumer services.
+On the other hand, the consumer-driven approach has a critical drawback.
+It undermines independent deployability for consumer services.
 After generating the consumer contract, the consumer team must wait for the provider team to pull down the contract, spin up their service, and verify that it correctly implements the consumer's requirements.
 Only if the provider passes verification can the consumer team proceed to deploying their service.
 In the event that provider verification fails, either the consumer team must fix the issue and start the process over again, or they must wait for the provider team to update their API to satisfy the contract.
@@ -67,7 +106,9 @@ The main benefit of a provider-driven approach is that it gives the provider tea
 Whether or not this makes sense depends on the organization and the roles of the services involved.
 One situation where this is appropriate is when the provider has a large number of consumers, and it is impractical for the provider team to negotiate their API with all of them at once.
 
-In a provider-driven model, it is less clear whether contract testing will give the provider team insight into how their API is being consumed. The contract describes what the provider offers, not necessarily how consumers are using it. Provider-driven solutions commonly support the ability for writing consumer-specific test cases in the provider contract, but this demands substantial additional effort.
+In a provider-driven model, it is less clear whether contract testing will give the provider team insight into how their API is being consumed.
+The contract describes what the provider offers, not necessarily how consumers are using it.
+Provider-driven solutions commonly support the ability for writing consumer-specific test cases in the provider contract, but this demands substantial additional effort.
 
 ### Spec-driven
 
