@@ -4,45 +4,45 @@ Given two services that interact with each other, a **contract test** interrogat
 The test relies on a document known as a **contract** that formally describes the interactions between the services.
 It does this by enumerating the HTTP requests and responses that each service expects to send and receive.
 
-Both services are individually tested to ensure that they conform to the contract.
-The test fails if either service does not conform, indicating that the two services will not integrate correctly.
-
-![Integration test vs service test vs contract test](../../assets/trains_2.svg)
-
-```json filename="example_contract.json" {8, 10}
+```json filename="example_contract.json" {11, 18}
 {
-  consumer: {
-    name: "service_1",
+  "consumer": {
+    "name": "shopping_cart_service"
   },
-  provider: {
-    name: "user_service",
+  "provider": {
+    "name": "payment_service"
   },
-  interactions: [
+  "interactions": [
     {
-      description: "a request for the user with a userId of 1",
-      request: {
-        headers: {
-          Accept: "application/json",
+      "description": "a request for the payment with a paymentId of 1",
+      "request": {
+        "headers": {
+          "Accept": "application/json",
         },
-        method: "GET",
-        path: "/users/1",
+        "method": "GET",
+        "path": "/payments/1"
       },
-      response: {
-        body: {
-          userId: 1,
-          username: "mimmy",
+      "response": {
+        "body": {
+          "paymentId": 1,
+          "amount": 12.50,
         },
-        headers: {
+        "headers": {
           "Content-Type": "application/json",
         },
-        status: 200,
-      },
-    },
-  ],
+        "status": 200
+      }
+    }
+  ]
 }
 ```
 
-In the context of contract test, services are classified as either a provider or consumer.
+Both services are individually tested to ensure that they conform to the contract.
+The test fails if either service does not conform, indicating that the two services will not integrate correctly.
+
+![Integration test vs service test vs contract test](./assets/images/2023-08-07-12-48-29.png)
+
+In the context of contract tests, services are classified as either a *provider* or *consumer*.
 
 - **Provider** - A service which exposes some functionality and/or data for other services to use.
 - **Consumer** - A service which requires functionality and/or data from another service in order to fulfill its own requirements.
@@ -56,7 +56,7 @@ Contract tests relieve the burden of having to deploy multiple services together
 They build confidence that the services will work correctly together, without requiring both teams to coordinate their testing or know how to run the other team's service.
 
 Not only that, but they also provide much faster feedback than integration and E2E tests.
-Contract tests behave more like unit tests or service tests, and can be run quickly, cheaply, and early on in the CI/CD pipeline.
+Contract tests behave more like unit tests or service tests and can be run quickly, cheaply, and early in the CI/CD pipeline.
 In fact, they are lightweight enough that a developer could even run them locally as they are working on the codebase.
 
 An added benefit of contract tests is that they isolate bugs with more specificity than most integration and E2E tests.
@@ -64,12 +64,12 @@ Because each interaction (*e.g.*, an HTTP request and response pair) is enumerat
 
 ## Limitations of Contract Testing
 
-As mentioned before, contract tests do not eliminate the need for integration and E2E tests.
+As mentioned, contract tests do not eliminate the need for integration and E2E tests.
 E2E tests provide a high degree of confidence because they try to mimic production conditions to the greatest extent possible.
-Contract tests have a more narrow focus—to test the compatibility of interfaces and catch breaking changes quickly.
+Contract tests have a more narrow focus — to test the compatibility of interfaces and catch breaking changes quickly.
 Contract tests do not replicate production conditions such as latency, service unavailability, and high amounts of load.
 
-Instead, contract tests reduce the *quantity* of broadly-scoped tests that are needed in CI/CD, and in some cases allow integration and E2E tests to be run separately from CI/CD altogether.
+Instead, contract tests reduce the *quantity* of broadly scoped tests that are needed in CI/CD and, in some cases, allow integration and E2E tests to be run separately from CI/CD altogether.
 
 Another trade-off to consider is that implementing contract testing may require **writing many new tests**.
 Until there is sufficient coverage of a service's interface, that team cannot be confident that accidental breakages will be caught.

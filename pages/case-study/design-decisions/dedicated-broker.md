@@ -12,7 +12,7 @@ As a consequence, if Deploy Guard were to read documents separately from the ind
 
 To ensure global consistency, it is imperative for Deploy Guard to access the documents from a **central repository**. While an online version control system such as Github[^1] could serve as a central repository, we made the decision to develop a dedicated broker. This choice allows us to provide features that are specifically tailored to contract testing.
 
-We will discuss the tradeoffs of this decision in the following sections.
+We will discuss the trade-offs of this decision in the following sections.
 
 ## The Positives
 
@@ -55,7 +55,7 @@ While Signet is open-source and self-hosted, if teams decide to transition to a 
 
 ## Built to Scale
 
-Throughout the analysis of various tradeoffs, a recurring theme emerges: a dedicated broker offers smoother integration of contract testing-specific features, albeit at the expense of managing an additional component in the existing infrastructure.
+Throughout the analysis of various trade-offs, a recurring theme emerges: a dedicated broker offers smoother integration of contract testing-specific features, albeit at the expense of managing an additional component in the existing infrastructure.
 Ultimately, we decided that while an online version control system like Github may be preferable as a short-term solution, a dedicated broker becomes increasingly advantageous as Signet expands its feature set.
 
 [^1]: Other contract testing frameworks (*Karate* and *Specmatic*) have implemented this approach and use Github as their central contract repository.
