@@ -1,8 +1,7 @@
 # Case Study
 
-**Signet** is an open-source contract testing framework for microservices.
-It promotes spec-first API design, and enables teams to build services in parallel with the confidence that they will be compatible when deployed.
+**Signet** is an open-source framework that makes it simple to set up contract testing for microservices. Signet automates the contract testing workflow, knows when it is safe to deploy, and integrates with CI/CD pipelines.
 
-Signet is designed for rapidly-scaling applications that want to introduce contract testing with minimal cost and configuration.
+<!-- Signet is an open-source contract testing framework for microservices. It is designed for companies that want to introduce contract testing without all of the overhead that it typically involves. -->
 
-The following case study introduces the problems that led us to build Signet and explores the trade-offs involved in its design.
+The following case study introduces the problems that led up to building Signet and explores the trade-offs involved in its design.

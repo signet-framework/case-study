@@ -9,67 +9,80 @@ Automated software tests are broadly grouped into three categories:
 - **Integration Tests** - Test that multiple logical components of the system function correctly together.
 - **End-to-End Tests (E2E)** - Exercise full-system workflows as they would occur in the live application.
 
-While each type of test serves a unique purpose and has a place in a well-balanced test suite, they all aim to increase developers' confidence that their services will work as expected in the real world.
+While each type of test serves a unique purpose and has a place in a well-balanced test suite, they all aim to increase developers' confidence that their application will work as expected in the real world.
 A pyramid is often used to illustrate how each type of test relates to the others.
 
 ![Testing pyramid](../../../assets/testing_pyramid.svg)
 
 Tests which are higher on the pyramid have a broader scope and provide more confidence that the system works correctly.
-However, broadly-scoped tests take longer to run, and do less to pinpoint the exact cause of a failure.
+However, broadly scoped tests take longer to run, and do less to pinpoint the exact cause of a failure.
 
 In contrast, tests that are lower on the pyramid execute more quickly and provide better isolation of bugs.
 However, these tests provide less confidence that the application works correctly as a whole.
 
-## Why Microservices Benefit from Broadly-scoped Tests
+Most applications use a mixture of different forms of testing and typically use specific kinds of tests at different stages of continuous integration/continuous delivery (CI/CD).
+Tests are sequenced in order to catch regressions as **early as possible**, and gradually ramp up in scope as confidence increases that everything is working as it should.
+This means that unit tests are typically run first, followed by in-process integration tests, after which the application may be deployed in a staging environment for additional integration and E2E testing.
 
-Compared with monoliths, microservices have more to gain from tests that are high on the pyramid.
-This is because API calls over the network are more complex and significantly less reliable than in-memory method calls.
-An additional factor is that different microservices may be built by different teams.
-Broadly-scoped tests confirm that multiple teams understand each other correctly.
+Since tests that are high on the pyramid provide the most confidence in the quality of the app, ideally they can be run as often as possible.
+However, since they also tend to be expensive and take a long time, this desire for more quality assurance must be balanced with the value of deploying updates more quickly.
+The longer it takes to progress through CI/CD, the longer it takes for users to see new features and bugfixes.
 
-Let us explore an example which illustrates why broadly-scoped tests are so important for microservices.
-In order to do that it will be helpful to think about services assuming the role of either a *provider* or a *consumer*.
+This is another area of strength for monolithic applications.
+Since much of the applications's complexity is pushed into the code rather than the underlying infrastructure, broadly scoped tests tend to be cheaper and faster.
+In fact, it is common to run E2E tests every time a new version of a monolith will be deployed.
 
-- **Provider** - a service which exposes some functionality and/or data for other services to use
-- **Consumer** - a service which requires functionality and/or data from another service in order to fulfill its own requirements
+<!-- Outline:
+- How testing fits into CI/CD
+  - unit tests locally
+  - built/pushed code undergoes unit tests in CI/CD
+  - integration tests
+  - E2E tests
+- get feedback quickly if something is broken
 
-In practice, a single service can be both a consumer and a provider (but ideally not with respect to the same other service).
+- this can work very will with monoliths
+- more challenging with microservices
+  - challenges with integration tests in general
+  - challenges with E2E tests
+- Why microservices still gain a lot from broadly scoped tests.
+  - solution:
+  - push E2E out of CI/CD, replace with alternative forms of testing
+    - service tests
+    - transition to contract tests -->
 
-TODO: [A] => [B] => [C]
-
-Microservices should be loosely coupled—one team should not need to know how another team's services are implemented.
-Suppose a provider team wants to change their service's API.
-If the provider team does not know how the consumer services are implemented, it is easy for them to accidentally change the API in a way that breaks a consumer.
-
-Integration and E2E tests are well-suited to catch this type of error before it is introduced into production.
-However, it is difficult to apply broadly-scoped tests to microservices without hindering independent deployability, clear ownership, and rapid development cycles.
-In the following section, we will explore why this is the case.
+Microservices are a different story.
+Carrying out broadly scoped tests on a distributed system requires overcoming additional challenges that do not arise when testing monoliths.
+Some of these challenges have to do with integration testing in general, while others have to do specifically with E2E tests.
+We will consider both areas.
 
 ### Challenges with Integration Testing
 
-Independent deployability requires that new versions of a service can be built, deployed, and released with **minimal involvement from other teams**.
-However, in order for one team to perform integration tests with another team's service, they may need help with a number of things:
+At this point, it is worth noting that the term "integration test" has multiple meanings depending on whom you talk to.
+In one sense, it is used as an umbrella term for anything more broad than a unit test.
+At other times, it refers to testing a small subset of components, but not the entire application (so, excluding E2E tests).
+For the remainder of this case study, we use the term "integration test" to mean any test that requires deploying and running more than one service (this can also include E2E tests).
 
-- Knowing which version (or versions) of the other service are currently released
-- Setting up the other service's runtime environment, configuring the service, and starting it up in the correct way
-- Setting up and configuring the other service's external dependencies (this might require getting additional teams involved as well)
+Integration tests are more complicated to implement for microservices because they do not neatly satisfy the ideals of limited ownership. In order for one team to perform integration tests with another team's service, they may need help with a number of things:
 
-To address this problem, integration tests can be supplemented with **service tests**, where the external service is replaced with a *test double*.
-The **test double** receives requests from the service being tested and sends back a canned response, enabling a team to test the integration of their service with another without actually spinning up the other service.
+- Knowing which version (or versions) of the other service are currently released,
+- Setting up the other service's runtime environment, configuring the service, and starting it up in the correct way, and
+- Setting up and configuring the other service's external dependencies (this might require getting additional teams involved as well).
+
+To address the limited ownership problem, integration tests can be supplemented with **service tests**, where the external service is replaced with a *test double*.
+The **test double** receives requests from the service being tested and sends back a canned response, enabling a team to test the integration of their service with another, without actually spinning up the other service.
 This lowers the costs of integration testing and speeds up the developer feedback loop.
 
 ![Integration test vs service test](../../../assets/trains_1.svg)
 
-However, service tests only work as long as the real provider's interface does not drift from the test double; if the provider service changes, the test double needs to be updated as well.
+However, service tests only work as long as the real external service's interface does not drift from that of the test double; if the real service changes, the test double needs to be updated as well.
 Ideally, there should be an *automated* way to validate that the test double is up to date with the real service it represents.
 
 ### Challenges with E2E testing
 
-The difficulties of testing microservices are even greater in the context of E2E testing.
-There are many reasons for this, but we will take a look at three in particular.
+Conducting integration tests on microservices becomes more difficult as the scope of the test expands. E2E tests are a huge pain point, and we will look at three reasons why they are more troublesome in this context than they are with monoliths.
 
-First, E2E testing requires simulating production conditions as best as possible in a dedicated testing environment.
-This is incredibly challenging with a large number of microservices, as it requires one or more instances of every service in the application to be spun up in the environment.
+First, E2E testing requires simulating production conditions as closely as possible in a dedicated testing environment.
+This is incredibly challenging with a large number of services, as it requires one or more instances of every service in the application to be spun up in the environment.
 Not only is this **expensive**, it also becomes increasingly **difficult to accomplish** as the architecture grows.
 In practice, E2E testing may require *multiple* testing environments so that different teams can conduct tests on new versions of their service at the same time.
 
@@ -79,10 +92,10 @@ E2E tests are especially slow for microservices because services interact throug
 
 > "I have seen \[E2E tests\] take up to a day to run, if not longer, and on one project I worked on, a full regression suite took six weeks!"[^1]
 
-Slow E2E test suites decrease the speed at which new features can be shipped because they slow down the developer feedback loop.
-If it takes longer for developers to become aware that their changes broke something, it takes longer for them to fix it and start the CI/CD process over again.
+As discussed previously, slow test suites decrease the rate at which updates can be released.
+They also slow down the developer feedback loop, making it more costly to fix a bug and start the CI/CD process over again.
 
-Finally, **E2E tests have a tendency to be flaky**, meaning that they may fail even when there is nothing wrong with the code being tested.
+Finally, **E2E tests tend to be flaky**, meaning that they may fail even when there is nothing wrong with the code being tested.
 A classic indicator of this is when back-to-back test runs yield different results, even when the code has not changed.
 Inconsistent test results can be caused by network faults, third-party services being unavailable, and application state being set up or torn down incorrectly between tests.
 
@@ -90,15 +103,21 @@ Inconsistent test results can be caused by network faults, third-party services 
 
 Flaky tests not only provide little value when they fail, but they also erode developer's trust in the test suite and promote a culture where it is acceptable to ignore failing tests.
 
-## The crux of the matter
+## Microservices Still Need Broadly Scoped Tests
 
-We have seen that in order to effectively test microservices, we need ways to increase our confidence that the application works correctly as a whole, without compromising the key benefits that lead us to adopting microservices in the first place.
+Despite the difficulties that broadly scoped tests pose for microservices, this type of architecture also has more to gain from them.
+This is because API calls over the network are more complex and significantly less reliable than in-memory method calls.
+Another factor is that microservices are more likely to be built by multiple teams, and broadly scoped tests serve as confirmation that teams correctly understand each other.
 
-What we need are testing methodologies that catch the same bugs as integration and E2E tests, while maintaining a high degree of independent deployability and clear boundaries of ownership.
-Ideally, these tests should also be faster, cheaper, and more maintainable than broadly-scoped tests.
-While these tests are unlikely to entirely supplant traditional integration and E2E tests, by running them first they could allow us to catch foreseeable bugs earlier in the development cycle.
+Therefore we are faced with a dilemma — microservices clearly need broadly scoped tests.
+However, they cannot be implemented in the same manner as is typically done for monoliths.
+Doing so can degrade the unique benefits that make microservices a desirable architecture to begin with.
 
-*Contract testing* is one such alternative, and it is there that we will turn our attention next.
+One solution to this dilemma is to use **alternative forms of testing** in CI/CD that catch as many breakages as possible, while still promoting fast feedback and quick deployment cycles.
+Using alternative forms of testing together with progressive delivery techniques can provide sufficient confidence during CI/CD so that broadly scoped tests don't need to be run for every deployment.
+As a result, integration and E2E tests can be run on a periodic schedule in order to catch the kinds of issues that only they can catch.
 
-[^1]: Sam Newman, Building Microservices 289 (2nd ed. 2021).
+Service tests and *contract tests* are two such alternative testing methodologies that lie within the scope of this case study. Since we have already introduced service tests, we will turn our attention to contract tests in the next section.
+
+[^1]: Sam Newman, *Building Microservices* 289 (2nd ed. 2021).
 [^2]: Martin Fowler, [Eradicating Non-determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html).
