@@ -26,29 +26,11 @@ This means that unit tests are typically run first, followed by in-process integ
 
 Since tests that are high on the pyramid provide the most confidence in the quality of the app, ideally they can be run as often as possible.
 However, since they also tend to be expensive and take a long time, this desire for more quality assurance must be balanced with the value of deploying updates more quickly.
-The longer it takes to progress through CI/CD, the longer it takes for users to see new features and bugfixes.
+The longer it takes to progress through CI/CD, the longer it takes for users to see new features and bug fixes.
 
 This is another area of strength for monolithic applications.
 Since much of the applications's complexity is pushed into the code rather than the underlying infrastructure, broadly scoped tests tend to be cheaper and faster.
 In fact, it is common to run E2E tests every time a new version of a monolith will be deployed.
-
-<!-- Outline:
-- How testing fits into CI/CD
-  - unit tests locally
-  - built/pushed code undergoes unit tests in CI/CD
-  - integration tests
-  - E2E tests
-- get feedback quickly if something is broken
-
-- this can work very will with monoliths
-- more challenging with microservices
-  - challenges with integration tests in general
-  - challenges with E2E tests
-- Why microservices still gain a lot from broadly scoped tests.
-  - solution:
-  - push E2E out of CI/CD, replace with alternative forms of testing
-    - service tests
-    - transition to contract tests -->
 
 Microservices are a different story.
 Carrying out broadly scoped tests on a distributed system requires overcoming additional challenges that do not arise when testing monoliths.

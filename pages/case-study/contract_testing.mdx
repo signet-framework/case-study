@@ -134,58 +134,41 @@ As long as the both teams require every new version of their service to be teste
 
 ## Existing Solutions
 
-Companies looking to adopt contract testing have a number of existing solutions to choose from. A brief perusal of these options will highlight the unique attributes that set Signet apart.
-
-### Pact
-
-Pact is the most well-known open-source option for contract testing.
-It uses a purely consumer-driven model.
-
-Two notable characteristics of Pact are that it relies on client libraries for writing consumer contract tests, and it includes a backend application called a "broker."
-The broker is responsible for managing contracts and describing the reasons for failed tests.
-It also gives developers insight into which services are deployed where, and whether or not their service is safe to be deployed to a given environment.
-
-We see two main challenges with Pact. The fact that it only works with a consumer-driven approach means that it does not maximize independent deployability. It also requires substantial investment in writing new unit tests.
+When we began exploring this space, we wanted a contract testing solution that was easy to get started with.
+We also wanted it to be **deployment-aware**, meaning that it could quickly identify the contracts that mattered for a given deployment environment.
+We examined the most popular options, including Pact, PactFlow, Karate, Specmatic, and Spring Cloud Contract.
+Given the importance of independent deployability, we eventually narrowed our search to PactFlow and Specmatic, since these were the only prominent options that offered a spec-driven approach.
 
 ### PactFlow
 
-The original creators of Pact have more recently come out with a paid Software-as-a-Service (SaaS) product called PactFlow.
-PactFlow builds on the foundation of Pact to provide a service they call "bidirectional" contract testing.
+PactFlow is a managed, subscription-based, Software-as-a-Service (SaaS) product for contract testing.
+It expands on the open-source, consumer-driven Pact framework to provide a service they call "bidirectional" contract testing.
 Bidirectional supports both spec-driven and provider-driven models by allowing the provider's API spec to be published before or after it has been tested against the provider service.
 
-While PactFlow significantly improves upon the flexibility of Pact, it still requires substantial effort to add contract testing into the CI/CD workflow.
-Consumer teams still need to write new unit tests using a Pact client library, or else configure a third-party tool for generating the consumer contract.
-Provider teams likewise need to supply their own solution for testing the provider implementation against the API spec.
+A notable characteristic of PactFlow is that it uses a backend component known as a "broker" to store and managed contracts.
+Having a broker allows PactFlow to keep track of deployments and inform developers of whether or not a service can be safely deployed to a given environment.
 
-### Karate
-
-Karate is another popular open-source solution for contract testing.
-Karate takes a unique approach to the provider-driven model.
-Rather than creating an API spec, the provider team uses Karate to generate a mock of the provider service.
-The consumer team can then use the mock in their service tests to verify that the consumer will integrate correctly with the real provider.
-Although Karate does not use unit tests to generate a consumer contract, developer's still use Karate's DSL to manually program the provider mock to respond correctly to the specific requests from the consumer.
+A major challenge we see with PactFlow is that even though it is a paid service, it still requires substantial effort to adopt contract testing.
+Although the authoritative contract is an API spec, PactFlow also uses a consumer contract to represent the consumer service internally.
+In order to generate this contract, consumer teams either need to write new unit tests with a client library from the Pact ecosystem, or else configure their own third-party tool to generate the consumer contract another way.
+PactFlow also does not support provider verification out of the box. Provider teams need to supply their own solution for testing the provider's implementation against the API spec.
 
 ### Specmatic
 
 Specmatic is an open-source offering for spec-driven contract testing.
-A key feature of Specmatic is that it offers a way to generate the contract by automatically recording the interactions between the consumer and provider service.
+A key feature of Specmatic is that it offers a way to generate the contract by automatically recording the interactions between the consumer and provider services.
 This means that contract testing can be achieved with a significantly smaller startup cost — there is no need to write new unit tests to get up and running.
 
 Another characteristic of Specmatic is that it does not use a broker — contracts are stored in version control instead.
-While this comprises a simple solution for managing contracts, it loses out on some useful features that a broker can provide.
-For instance, in order for a CI/CD pipeline to automatically gate a deployment based on what is currently deployed, significant effort must be expended to DIY this capability.
+While this comprises a simple solution for managing contracts, it loses out on some useful features that a broker can provide, one of which is deployment awareness.
+If users of Specmatic want their CI/CD pipeline to automatically gate deployments, they will have to build their own solution to identify the relevant contracts per environment.
 
 ## A Need for a New Solution
-
-import SolutionsTable from '../../components/SolutionsTable'
-
-<SolutionsTable />
 
 Existing solutions offer clear trade-offs in terms of contract testing approach and feature set.
 A recurring theme among many of them is that adopting contract testing is costly, requiring significant investment in writing new unit tests.
 
-Other solutions also stop short of answering the ultimate question developers ask when adopting contract testing: will this service integrate properly with other services in a given environment?
-Broker-less solutions require teams to build this capability from scratch, as they lack awareness of what service versions are currently deployed.
+Other solutions lack awareness of deployments. Although they can test services against a contract, they don't have a way to know whether that service is compatible with the services that are currently deployed to any given environment.
 
-There are also a limited number of open-source solutions that offer a spec-driven approach.
-A spec-driven model is highly desirable since it maximizes independent deployability and naturally aligns with a spec-first approach to API design.
+There are also a limited number of solutions that offer a spec-driven approach.
+Spec-driven contract testing is desirable to companies that want to maximize independent deployability. It also aligns most naturally with teams that use a spec-first approach to API design.

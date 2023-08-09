@@ -17,7 +17,7 @@ Such companies tend to be unstable in terms of their business requirements — m
 Monoliths are more forgiving of this instability because they require less architectural commitment upfront.
 Getting started with an architecture style involving many infrastructure components (such as microservices) can be more challenging if the long-term shape of the business is not known with confidence.
 
-A monolithic architecture also allows for a simpler deployment and maintenance.
+A monolithic architecture also allows for simpler deployment and maintenance.
 When all of the business logic is executed as a single process, each instance of the application can be hosted on a single node.
 An added benefit of this is that requests can be handled more quickly and reliably when they do not require calls to out-of-process components.
 
