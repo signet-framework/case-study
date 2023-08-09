@@ -14,10 +14,10 @@ Each business domain can consume the functionality of other domains through **in
 
 Monoliths are a **sensible default architecture** for most web apps, and they are especially suitable if a company is at an early stage of business development.
 Such companies tend to be unstable in terms of their business requirements — many adapting significantly before finding their long-term market niche.
-Monoliths cater to this instability because modeling business domains through programming constructs makes them easy to re-architect.
-More precisely, they are easier to re-architect than if they were modeled by compute and network infrastructure components, as they are in some other architectural patterns.
+Monoliths are more forgiving of this instability because they require less architectural commitment upfront.
+Getting started with an architecture style involving many infrastructure components (such as microservices) can be more challenging if the long-term shape of the business is not known with confidence.
 
-A monolithic architecture also allows for a simpler deployment strategy.
+A monolithic architecture also allows for a simpler deployment and maintenance.
 When all of the business logic is executed as a single process, each instance of the application can be hosted on a single node.
 An added benefit of this is that requests can be handled more quickly and reliably when they do not require calls to out-of-process components.
 
@@ -53,13 +53,11 @@ However, in a microservice architecture, any service should be able to be redepl
 Independent deployability is only possible to the extent that business domains are well-defined (so that cross-domain changes are rare), and service's APIs change in ways that are backwards compatible.
 As with limited ownership, independent deployability makes it easier for each business domain to evolve quickly, since teams do not need to worry about batching the deployment of their changes with the changes from other teams.
 
-The flip side of maximizing the independence of each business domain is that it can be more challenging to re-architect the application as a whole.
-This makes microservices less suitable for new businesses where the long-term business domains are not yet known with confidence.
-
-Another trade-off with microservices is that even a single instance of the application becomes a kind of distributed system, creating a host of new challenges.
+A major trade-off with microservices is that even a single instance of the application becomes a kind of distributed system, creating a host of new challenges.
 Communicating with out-of-process components introduces additional latency and unreliability into the system.
 In addition, the overall deployment strategy for the application can be more complex.
 These challenges make microservices less suitable for applications managed by a small number of engineers, as they gain less from the benefits mentioned above in exchange for this added complexity.
+Additionally, getting started with microservices may involve more initial investment in designing the infrastructure than a monolith would require.
 
 ## Testing Microservices
 

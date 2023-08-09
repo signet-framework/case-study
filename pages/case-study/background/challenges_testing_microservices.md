@@ -60,7 +60,7 @@ We will consider both areas.
 At this point, it is worth noting that the term "integration test" has multiple meanings depending on whom you talk to.
 In one sense, it is used as an umbrella term for anything more broad than a unit test.
 At other times, it refers to testing a small subset of components, but not the entire application (so, excluding E2E tests).
-For the remainder of this case study, we use the term "integration test" to mean any test that requires deploying and running more than one service (this can also include E2E tests).
+For the remainder of this case study, we use the term "integration test" to mean any test that requires deploying and running more than one service.
 
 Integration tests are more complicated to implement for microservices because they do not neatly satisfy the ideals of limited ownership. In order for one team to perform integration tests with another team's service, they may need help with a number of things:
 
