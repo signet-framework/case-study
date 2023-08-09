@@ -76,25 +76,26 @@ Until there is sufficient coverage of a service's interface, that team cannot be
 
 ## Evaluating various forms of Contract Testing
 
-There are many approaches to contract testing, and each vendor has a slightly different take on how it should be conducted.
-Methodologies are grouped into three categories according to how they determine the details of the contract.
+There are three general types of contract testing. The main difference between them lies in what exactly is being represented by the contract.
 
-- **Consumer-driven** - The consumer service is the source of truth.
-- **Provider-driven** - The provider service is the source of truth.
-- **Spec-driven** - The source of truth is independent of either service's implementation.
+- **Consumer-driven** - The contract represents how the consumer is currently implemented.
+- **Provider-driven** - The contract represents how the provider is currently implemented.
+- **Spec-driven** - The contract represents how both services *should* be implemented even if neither of them yet conform to that implementation.
 
 ### Consumer-driven
 
-In consumer-driven contract testing, the consumer service is implemented first.
-After the consumer team has implemented their side of the integration, they use unit tests to generate a consumer contract, which describes the expectations that the consumer service has of the provider service.
-The consumer contract is then handed over to the provider team and they implement the provider's API to satisfy the needs of the consumer.
-After the provider API is implemented, the requests in the contract are *replayed* against the API (a process known as **provider verification**) and the responses are compared with those specified in the contract.
-If the provider service sends the correct response for each request, the test passes.
+In consumer-driven contract testing, the contract represents how the consumer service is currently implemented.
+The consumer team writes unit tests that exercise the consumer’s API client code.
+Running these tests creates a consumer contract based on the requests that the consumer service makes as well as the responses it successfully handles.
+The resulting contract describes the expectations that the consumer service has of the provider service.
+The consumer contract is then handed over to the provider team so they can verify the contract against the provider’s API.
+The requests in the contract are replayed against the API (a process known as *provider verification*) and the responses from the API are compared with those specified in the contract.
+If the provider service sends the correct response for each request, the contract test passes.
 
 A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API are being used by the consumer.
 This gives the provider team insight into how they can evolve their API without breaking any consumers.
 
-On the other hand, the consumer-driven approach has a critical drawback.
+On the other hand, the consumer-driven approach also has a major drawback.
 It undermines independent deployability for consumer services.
 After generating the consumer contract, the consumer team must wait for the provider team to pull down the contract, spin up their service, and verify that it correctly implements the consumer's requirements.
 Only if the provider passes verification can the consumer team proceed to deploying their service.
@@ -106,7 +107,7 @@ Taking into account that microservices may have multiple external dependencies, 
 ### Provider-driven
 
 Provider-driven contract testing is nearly the reverse of consumer-driven.
-The provider service is implemented first, and a provider contract is generated that describes the provider's side of the integration.
+The provider contract is generated based on the current implementation of the provider service.
 Usually the provider contract comes in the form of an API specification, other times the provider team distributes a test double which consumers can test against.
 
 The main benefit of a provider-driven approach is that it gives the provider team authority over what the integration looks like.
