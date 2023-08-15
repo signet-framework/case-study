@@ -56,6 +56,10 @@ const config: DocsThemeConfig = {
         title: 'Signet Framework'
       }
     }
+  },
+  // darkMode: true,
+  nextThemes: {
+    defaultTheme: 'dark',
   }
 }
 
