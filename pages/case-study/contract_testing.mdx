@@ -152,7 +152,7 @@ PactFlow is a managed, subscription-based, Software-as-a-Service (SaaS) product 
 It expands on the open-source, consumer-driven Pact framework to provide a service they call "bidirectional" contract testing.
 Bidirectional supports both spec-driven and provider-driven models by allowing the provider's API spec to be published before or after it has been tested against the provider service.
 
-A notable characteristic of PactFlow is that it uses a backend component known as a **broker** to store and managed contracts.
+A notable characteristic of PactFlow is that it uses a backend component known as a **broker** to store and manage contracts.
 Having a broker allows PactFlow to keep track of deployments and inform developers of whether or not a service can be safely deployed to a given environment.
 
 A major challenge we see with PactFlow is that even though it is a paid service, it still requires substantial effort to adopt contract testing.
@@ -167,7 +167,7 @@ A key feature of Specmatic is that it offers a way to generate the contract by a
 This means that contract testing can be achieved with a significantly smaller startup cost — there is no need to write new unit tests to get up and running.
 
 Another characteristic of Specmatic is that it does not use a broker — contracts are stored in version control instead.
-While this comprises a simple solution for managing contracts, it loses out on some useful features that a broker can provide, one of which is deployment awareness.
+While this comprises a simple solution for managing contracts, it loses out on some useful features that a broker can provide, one of which is deployment-awareness.
 If users of Specmatic want their CI/CD pipeline to automatically gate deployments, they will have to build their own solution to identify the relevant contracts per environment.
 
 ## A Need for a New Solution
