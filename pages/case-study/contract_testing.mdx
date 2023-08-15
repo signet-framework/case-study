@@ -47,8 +47,8 @@ In the context of contract tests, services are classified as either a *provider*
 - **Provider** - A service which exposes some functionality and/or data for other services to use.
 - **Consumer** - A service which requires functionality and/or data from another service in order to fulfill its own requirements.
 
-In practice, a single service can act as either a provider or a consumer in different situations (but ideally not with respect to the same other service).
-
+These roles are only meaningful in the context of a single integration between two services.
+A service may assume the role of a provider with respect to one service while assuming the role of a consumer with respect to another service.
 
 ## Benefits of Contract Testing
 
@@ -64,14 +64,15 @@ Because each interaction (*e.g.*, an HTTP request and response pair) is enumerat
 
 ## Limitations of Contract Testing
 
-As mentioned, contract tests do not eliminate the need for integration and E2E tests.
+Contract tests do not eliminate the need for integration and E2E tests.
 E2E tests provide a high degree of confidence because they try to mimic production conditions to the greatest extent possible.
 Contract tests have a more narrow focus — to test the compatibility of interfaces and catch breaking changes quickly.
-Contract tests do not replicate production conditions such as latency, service unavailability, and high amounts of load.
+Contract tests exclude many production conditions such as latency, service unavailability, and configuration/deployment details.
+Ambient factors like these are implicitly tested during E2E testing simply because all of the services are tested together in a staging environment.
 
 Instead, contract tests reduce the *quantity* of broadly scoped tests that are needed in CI/CD and, in some cases, allow integration and E2E tests to be run separately from CI/CD altogether.
 
-Another trade-off to consider is that implementing contract testing may require **writing many new tests**.
+Another trade-off to consider is that implementing contract testing may require writing many new tests.
 Until there is sufficient coverage of a service's interface, that team cannot be confident that accidental breakages will be caught.
 
 ## Evaluating various forms of Contract Testing
@@ -92,6 +93,8 @@ The consumer contract is then handed over to the provider team so they can verif
 The requests in the contract are replayed against the API (a process known as *provider verification*) and the responses from the API are compared with those specified in the contract.
 If the provider service sends the correct response for each request, the contract test passes.
 
+![consumer driven](../../assets/consumer_driven.png)
+
 A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API are being used by the consumer.
 This gives the provider team insight into how they can evolve their API without breaking any consumers.
 
@@ -110,6 +113,8 @@ Provider-driven contract testing is nearly the reverse of consumer-driven.
 The provider contract is generated based on the current implementation of the provider service.
 Usually the provider contract comes in the form of an API specification, other times the provider team distributes a test double which consumers can test against.
 
+![provider driven](../../assets/provider_driven.png)
+
 The main benefit of a provider-driven approach is that it gives the provider team authority over what the integration looks like.
 Whether or not this makes sense depends on the organization and the roles of the services involved.
 One situation where this is appropriate is when the provider has a large number of consumers, and it is impractical for the provider team to negotiate their API with all of them at once.
@@ -122,6 +127,8 @@ Provider-driven solutions commonly support the ability for writing consumer-spec
 
 Spec-driven contract testing occurs when the API spec is defined separately from either service's implementation.
 Usually this means that the consumer and provider teams agree on the API spec ahead of time, before either service has implemented it.
+
+![spec driven](../../assets/spec_driven.png)
 
 This approach flows naturally out of "Spec-first" API design, a practice where the provider team decides on a spec before writing the code, instead of documenting their implementation after it is completed.
 This design philosophy is beneficial because it allows both the consumer and provider services to be implemented simultaneously.
@@ -145,7 +152,7 @@ PactFlow is a managed, subscription-based, Software-as-a-Service (SaaS) product 
 It expands on the open-source, consumer-driven Pact framework to provide a service they call "bidirectional" contract testing.
 Bidirectional supports both spec-driven and provider-driven models by allowing the provider's API spec to be published before or after it has been tested against the provider service.
 
-A notable characteristic of PactFlow is that it uses a backend component known as a "broker" to store and managed contracts.
+A notable characteristic of PactFlow is that it uses a backend component known as a **broker** to store and managed contracts.
 Having a broker allows PactFlow to keep track of deployments and inform developers of whether or not a service can be safely deployed to a given environment.
 
 A major challenge we see with PactFlow is that even though it is a paid service, it still requires substantial effort to adopt contract testing.
@@ -171,6 +178,6 @@ A recurring theme among many of them is that adopting contract testing is costly
 Other solutions lack awareness of deployments. Although they can test services against a contract, they don't have a way to know whether that service is compatible with the services that are currently deployed to any given environment.
 
 There are also a limited number of solutions that offer a spec-driven approach.
-Spec-driven contract testing is desirable to companies that want to maximize independent deployability. It also aligns most naturally with teams that use a spec-first approach to API design.
+Spec-driven contract testing is desirable to many companies that want to maximize independent deployability. It also aligns most naturally with teams that use a spec-first approach to API design.
 
 Since we could not find a solution with the combination of trade-offs we were looking for, we decided to build our own.

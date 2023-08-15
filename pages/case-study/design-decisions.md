@@ -1,6 +1,6 @@
 # Design Decisions
 
-Signet's feature set has been carefully designed for a specific use case: making it simple to implement contract testing to reduce the burden of integration and E2E tests in CI/CD.
+Signet's feature set has been carefully designed for a specific use case: making it simple to implement contract testing to reduce the burden of integration and E2E tests for microservices.
 Now that we have described what Signet is and what it does, we will examine five of the more interesting engineering decisions we made when designing Signet.
 
 We begin by discussing Signet's model for consumer contracts and provider specifications.
