@@ -12,7 +12,7 @@ Automated software tests are broadly grouped into three categories:
 While each type of test serves a unique purpose and has a place in a well-balanced test suite, they all aim to increase developers' confidence that their application will work as expected in the real world.
 A pyramid is often used to illustrate how each type of test relates to the others.
 
-![Testing pyramid](../../assets/testing_pyramid.svg)
+![Testing pyramid](../../assets/pyramid.png)
 
 Tests which are higher on the pyramid have a broader scope and provide more confidence that the system works correctly.
 However, broadly scoped tests take longer to run, and do less to pinpoint the exact cause of a failure.
