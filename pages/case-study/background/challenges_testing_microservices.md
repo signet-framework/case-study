@@ -24,12 +24,14 @@ Most applications use a mixture of different forms of testing and typically use 
 Tests are sequenced in order to catch regressions as **early as possible**, and gradually ramp up in scope as confidence increases that everything is working as it should.
 This means that unit tests are typically run first, followed by in-process integration tests, after which the application may be deployed in a staging environment for additional integration and E2E testing.
 
+![monolith CI/CD](../../../assets/monolith_cicd_2.png)
+
 Since tests that are high on the pyramid provide the most confidence in the quality of the app, ideally they can be run as often as possible.
 However, since they also tend to be expensive and take a long time, this desire for more quality assurance must be balanced with the value of deploying updates more quickly.
 The longer it takes to progress through CI/CD, the longer it takes for users to see new features and bug fixes.
 
 This is another area of strength for monolithic applications.
-Since much of the applications's complexity is pushed into the code rather than the underlying infrastructure, broadly scoped tests tend to be cheaper and faster.
+Since much of the applications's complexity is pushed into the code rather than the underlying infrastructure, broadly scoped tests still tend to be reasonably fast and cheap.
 In fact, it is common to run E2E tests every time a new version of a monolith will be deployed.
 
 Microservices are a different story.
@@ -98,6 +100,8 @@ Doing so can degrade the unique benefits that make microservices a desirable arc
 One solution to this dilemma is to use **alternative forms of testing** in CI/CD that catch as many breakages as possible, while still promoting fast feedback and quick deployment cycles.
 Using alternative forms of testing together with progressive delivery techniques can provide sufficient confidence during CI/CD so that broadly scoped tests don't need to be run for every deployment.
 As a result, integration and E2E tests can be run on a periodic schedule in order to catch the kinds of issues that only they can catch.
+
+![microservices CI/CD](../../../assets/microservices_cicd_3.png)
 
 Service tests and *contract tests* are two such alternative testing methodologies that lie within the scope of this case study. Since we have already introduced service tests, we will turn our attention to contract tests in the next section.
 

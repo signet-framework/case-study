@@ -25,16 +25,35 @@ article p img {
 }
 
 /* @media (prefers-color-scheme: dark) {
-  article p img {
+  /* article p img {
     border: 2px dashed white;
-  }
+  } */
+  /* .light {
+    display: none;
+  } */
+/* } */
+
+.dark-img {
+  display: none;
 }
 
-@media (prefers-color-scheme: light) {
-  article p img {
+.light-img {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* article p img {
     border: 2px dashed red;
+  } */
+
+  .dark-img {
+    display: block;
   }
-} */
+
+  .light-img {
+    display: none;
+  }
+}
 
 table {
   min-width: 80%;
