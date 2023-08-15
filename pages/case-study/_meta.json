@@ -1,7 +1,12 @@
 {
   "background": "Background",
-  "contract_testing": "Contract Testing",
+  "Background2": {
+    "type": "separator"
+  },
   "signet-framework": "Introducing Signet",
+  "---": {
+    "type": "separator"
+  },
   "design-decisions": "Design Decisions",
   "future-work": "Future Work"
 }
