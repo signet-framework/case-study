@@ -1,4 +1,18 @@
 {
+  "case-study": "Case Study",
+  "background": "Background",
+  "---_": {
+    "type": "separator"
+  },
+  "signet-framework": "Introducing Signet",
+  "---": {
+    "type": "separator"
+  },
+  "design-decisions": "Design Decisions",
+  "--": {
+    "type": "separator"
+  },
+  "future-work": "Future Work",
   "index": {
     "title": "Signet",
     "display": "hidden",
@@ -12,17 +26,8 @@
     "type": "page",
     "href": "/case-study"
   },
-  "case-study": {
-    "title": "Case Study"
-  },
-  "about": {
-    "title": "About",
+  "team": {
+    "title": "Team",
     "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://github.com/signet-framework/",
-    "newWindow": true
   }
 }

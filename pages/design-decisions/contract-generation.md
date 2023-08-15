@@ -3,7 +3,7 @@
 At their core, consumer contracts and provider specifications are serialized data (usually JSON or YAML) files that adhere to a specific schema, which allows them to be written using a text editor.
 However, relying on this manual approach introduces the risk of misalignment between the actual service and its corresponding document.
 
-While we addressed the problem of misalignment for the provider side through [provider verification](https://signet-framework.dev/case-study/design-decisions/provider-verification), we now needed to tackle the same challenge for the consumer side.
+While we addressed the problem of misalignment for the provider side through [provider verification](./provider-verification), we now needed to tackle the same challenge for the consumer side.
 
 ## Replicate the Provider Approach
 
@@ -11,14 +11,14 @@ One option we considered is to replicate the approach used for the provider side
 Essentially, we would shift the responsibility of writing the contract onto the developer and offer *consumer* verification as a Signet feature.
 However, we quickly realized that while there are benefits to writing a provider specification by hand, there is little practical benefit to writing a consumer contract by hand.
 
-For provider specifications, designing and writing the specification manually allows for collaboration, which is a key component of [spec-driven development](https://signet-framework.dev/case-study/contract_testing#spec-driven).
+For provider specifications, designing and writing the specification manually allows for collaboration, which is a key component of [spec-driven development](../background/contract_testing#spec-driven).
 However, consumer contracts lack the same benefits from collaboration, since they are created after the consumer is implemented.
 In other words, a provider specification serves as a blueprint, while a consumer contract is merely a snapshot.
 Therefore, we decided that automating the consumer contract generation is more productive for the developer.
 
 ## Generate Consumer Contract
 
-Before considering any implementations of this approach, we assumed that teams are already performing consumer [service tests](https://signet-framework.dev/case-study/background/challenges_testing_microservices#challenges-with-integration-testing) that involve sending HTTP requests to a mock provider.
+Before considering any implementations of this approach, we assumed that teams are already performing consumer [service tests](../background/challenges_testing_microservices#challenges-with-integration-testing) that involve sending HTTP requests to a mock provider.
 In other words, their testing infrastructure has already configured a **mocking service**.
 
 Furthermore, their mocking service configuration contains descriptions of the expected HTTP requests and responses between the consumer and provider.

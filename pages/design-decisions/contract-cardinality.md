@@ -15,7 +15,7 @@ Conversely, for each provider, only a *single* provider specification is needed 
 
 [NTD: these are rough placeholder diagrams]
 
-![contracts and specs](../../../assets/image-2.png)
+![contracts and specs](../../assets/image-2.png)
 
 ## Alternative Approaches
 
@@ -25,7 +25,7 @@ Conversely, for each provider, only a *single* provider specification is needed 
  In this approach, developers exclusively work with provider specifications.
  The consumer's responsibility is solely to ensure their implementation adheres to the specification, without concerning themselves with generating or publishing contracts.
 
- ![No consumer contract](../../../assets/image-1.png)
+ ![No consumer contract](../../assets/image-1.png)
 
  However, this simplicity comes at the cost of **weaker backward compatibility testing**, as it becomes challenging to detect if a new specification remains compatible with existing consumers.
  When working solely with specifications, backwards compatibility testing is limited to checking if the new specification is a superset of the old specification.
@@ -41,7 +41,7 @@ In this approach, developers create a **new provider specification for each asso
 Each provider specification represents all the API behaviors offered to a specific consumer.
 The main advantage of this approach is its support for more flexible independent deployment.
 
-![One spec per consumer](../../../assets/image.png)
+![One spec per consumer](../../assets/image.png)
 
 Consider a scenario where one provider is depended on by five consumers, but the provider has only implemented the requirements for four of them.
 If there were only one specification, the provider would fail provider verification and be unable to be deployed alongside any of the four consumers, even though they are all compatible.

@@ -7,7 +7,7 @@ Companies with existing service tests do not need to write any new unit tests, a
 Signet is also deployment-aware, so teams can easily check if their service is safe to deploy to an environment.
 Additionally, Signet can be fully integrated with CI/CD in order to automate contract testing and reduce the need for more expensive tests.
 
-![comparison with other solutions](../../assets/signet_comparison.png)
+![comparison with other solutions](../assets/signet_comparison.png)
 
 ## Core Features
 
@@ -51,11 +51,11 @@ Given these, Deploy Guard can check whether:
 
 If all of these conditions are met, Deploy Guard informs the developer that it is safe to deploy to that environment.
 
-![deploy guard](../../assets/deploy_guard.png)
+![deploy guard](../assets/deploy_guard.png)
 
 Deploy Guard is also available through the Signet CLI, allowing CI/CD pipelines to gate deployments based on what is already deployed.
 Along with Deploy Guard, the rest of the contract testing workflow can be automated in CI/CD using the CLI.
 The Signet broker ensures that there is a centralized source of truth for every pipeline implementing contract testing.
 Event-driven workflows are also supported by subscribing CI/CD pipelines to receive webhooks from the broker based on various contract testing events.
 
-![deploy guard](../../assets/webhook.png)
+![deploy guard](../assets/webhook.png)

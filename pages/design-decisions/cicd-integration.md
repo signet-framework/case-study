@@ -6,7 +6,7 @@ This supported our goal to make it simple to get started with contract testing.
 **Continuous Integration/Continuous Delivery (CI/CD)** is a practice by which changes to the codebase are frequently tested, merged, and deployed.
 Teams building microservices often rely on an automated CI/CD pipeline to maintain a high level of quality while shipping updates quickly.
 
-As discussed [previously](/case-study/background/challenges_testing_microservices#challenges-with-e2e-testing), CI/CD should inform the developer as soon as possible if their changes broke something.
+As discussed [previously](../background/challenges_testing_microservices#challenges-with-e2e-testing), CI/CD should inform the developer as soon as possible if their changes broke something.
 Replacing integration and E2E tests with contract tests in CI/CD promotes this objective by moving the expensive tests outside of the pipeline.
 This gives developers faster feedback when breaking changes occur, while still allowing the CI/CD pipeline to stop a deployment when necessary.
 
@@ -14,7 +14,7 @@ This gives developers faster feedback when breaking changes occur, while still a
 
 Signet integrates with CI/CD in two ways: through the **CLI**, and through the broker's support for **webhooks**.
 
-The CLI provides commands for automatically [generating contracts](/case-study/design-decisions/contract-generation), publishing contracts and API specs to the broker, and [verifying provider services](/case-study/design-decisions/provider-verification).
+The CLI provides commands for automatically [generating contracts](./contract-generation.md), publishing contracts and API specs to the broker, and [verifying provider services](./provider-verification).
 It can also notify the broker of deployments and use Deploy Guard to determine if a given service is safe to deploy to an environment.
 A CI/CD pipeline can automate all of these behaviors by invoking CLI commands and can simplify the automation by pre-configuring the CLI using a config file.
 
