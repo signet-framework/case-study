@@ -4,7 +4,14 @@ import { useRouter } from 'next/router'
 
 const config: DocsThemeConfig = {
   logo: (<>
-    <img src={"/transparent-logo-horizontal-mn.svg"} style={{ maxHeight: "5rem" }} alt="logo" />
+    <img src={"/signet-logo-only.svg"} style={{ maxHeight: "5rem" }} alt="logo" />
+    <span style={{
+      fontSize: "2rem",
+      // color: "linear-gradient(90deg, #64009E 0%, #0CBAFF 100%)"
+      color: "#0CBAFF"
+    }}>
+      Signet
+    </span>
   </>),
   project: {
     link: 'https://github.com/signet-framework/',

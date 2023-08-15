@@ -2,7 +2,10 @@
   "index": {
     "title": "Signet",
     "display": "hidden",
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
   },
   "case-study-header-link": {
     "title": "Case Study",

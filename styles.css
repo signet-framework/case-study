@@ -15,8 +15,10 @@ main p {
 article p img {
   margin-top: 3rem;
   margin-bottom: 3rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
   /* border: 2px solid white; */
   /* padding: 3rem; */
   /* border-radius: 10px; */
@@ -61,4 +63,15 @@ td img {
   margin-left: auto;
   margin-right: auto;
   height: 10rem;
+}
+
+.homepage {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  padding: 1rem 1rem;
+}
+
+.homepage div {
+  height: 100%;
 }
