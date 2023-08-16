@@ -1,0 +1,15 @@
+{
+  "index": "Introduction",
+  "background": {
+    "title": "Background"
+  },
+  "---": {
+    "type": "separator"
+  },
+  "signet-framework": "Introducing Signet",
+  "---_": {
+    "type": "separator"
+  },
+  "design-decisions": "Design Decisions",
+  "future-work": "Future Work"
+}

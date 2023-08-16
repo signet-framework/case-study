@@ -1,18 +1,8 @@
 {
-  "case-study": "Case Study",
-  "background": "Background",
-  "---_": {
-    "type": "separator"
+  "case-study": {
+    "type": "page",
+    "title": "Case Study"
   },
-  "signet-framework": "Introducing Signet",
-  "---": {
-    "type": "separator"
-  },
-  "design-decisions": "Design Decisions",
-  "--": {
-    "type": "separator"
-  },
-  "future-work": "Future Work",
   "index": {
     "title": "Signet",
     "display": "hidden",
@@ -20,11 +10,6 @@
     "theme": {
       "layout": "raw"
     }
-  },
-  "case-study-header-link": {
-    "title": "Case Study",
-    "type": "page",
-    "href": "/case-study"
   },
   "team": {
     "title": "Team",

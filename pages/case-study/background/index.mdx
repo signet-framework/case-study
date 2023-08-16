@@ -10,7 +10,7 @@ Typically, this means that each business domain is modeled by one or more progra
 When deployed, the server-side logic runs as a single process.
 Each business domain can consume the functionality of other domains through **in-memory method calls**.
 
-![](../../assets/monolith_2.png)
+![](../../../assets/monolith_2.png)
 
 {/*
 import Image from 'next/image'
@@ -52,7 +52,7 @@ In a **microservice architecture**, the application is split up into *independen
 A **service** can be thought of as a standalone unit of software that encapsulates its own logic.
 A service exposes an interface so that other services or applications can consume its functionality through messages sent over the network.
 
-![](../../assets/microservices_5.png)
+![](../../../assets/microservices_5.png)
 
 Well-designed microservice architectures allow large applications to remain highly evolvable *within* each business domain.
 While cross-domain changes tend to be more complicated than with monoliths, isolating each area of business functionality into a standalone unit makes it easier to ship new features for a given domain.
