@@ -6,28 +6,28 @@ const teamData = [
     name: "Hernando Delgado",
     location: "Charlotte, NC",
     linkedInUrl: "https://www.linkedin.com/in/hernandodelgado/",
-    personalPageUrl: "https://www.john-doe.com",
+    personalPageUrl: "",
     image: "/hd.png",
   },
   {
     name: "Zach Morgan",
     location: "Bend, OR",
     linkedInUrl: "https://www.linkedin.com/in/zachmorgan97/",
-    personalPageUrl: "https://www.john-doe.com",
+    personalPageUrl: "",
     image: "/zm.png",
   },
   {
     name: "Michael Newman",
     location: "Miami, FL",
     linkedInUrl: "https://www.linkedin.com/in/michael-newman-a5465516b/",
-    personalPageUrl: "https://www.john-doe.com",
+    personalPageUrl: "",
     image: "/mn.png",
   },
   {
     name: "Eric Vu",
     location: "San Jose, CA",
     linkedInUrl: "https://www.linkedin.com/",
-    personalPageUrl: "https://www.john-doe.com",
+    personalPageUrl: "",
     image: "/ev.png",
   },
 ];
@@ -98,7 +98,7 @@ const Team = ({ theme }) => {
           fontWeight: "bold",
           color: theme === "light" ? "#64009E" : "#0CBAFF",
           textAlign: "center",
-          marginBottom: "3rem",
+          margin: "2rem",
         }}
       >
         Created by

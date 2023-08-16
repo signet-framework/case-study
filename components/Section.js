@@ -17,7 +17,7 @@ const darkTheme = {
 };
 
 const lightTheme = {
-  background: "rgb(200, 200, 200)",
+  background: "rgb(223, 223, 223)",
   color: darkColor,
   flexFlow: "row-reverse wrap",
 };

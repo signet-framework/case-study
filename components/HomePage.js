@@ -134,11 +134,11 @@ const HomePage = () => {
             marginTop: "1rem",
           }}
         >
-          <Link href="/case-study" style={linkStyle}>
+          {/* <Link href="/case-study" style={linkStyle}>
             <PlayerPlay style={{ display: "inline" }} /> Watch Tech Talk
-          </Link>
+          </Link> */}
           <Link href="/case-study" style={linkStyle}>
-            Read Case Study
+            Read the Case Study
           </Link>
         </div>
       </section>
@@ -156,11 +156,12 @@ const HomePage = () => {
         </Section>
       ))}
       <section
-        style={{ ...sectionStyle, background: "rgb(48, 52, 58)" }} // darkColor
+        // style={{ ...sectionStyle, background: "rgb(48, 52, 58)" }}
+        style={{ ...sectionStyle, background: "rgb(223, 223, 223)" }}
         key={content.length + 1}
         index={content.length}
       >
-        <Team theme={content.length % 2 === 0 ? "light" : "dark"} />
+        <Team theme={content.length % 2 === 0 ? "dark" : "light"} />
       </section>
     </div>
   );
