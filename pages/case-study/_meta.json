@@ -1,0 +1,18 @@
+{
+  "index": "Introduction",
+  "background": {
+    "type": "separator",
+    "title": "Background"
+  },
+  "monoliths-and-microservices": "Monoliths and Microservices",
+  "challenges-testing-microservices": "Challenges with Testing Microservices",
+  "contract-testing": "Contract Testing",
+  "existing-solutions": "Existing Solutions",
+  "signet": {
+    "type": "separator",
+    "title": "Signet"
+  },
+  "signet-framework": "Introducing Signet",
+  "design-decisions": "Design Decisions",
+  "future-work": "Future Work"
+}

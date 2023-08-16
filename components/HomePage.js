@@ -5,9 +5,7 @@ import Link from "next/link";
 import Section, { darkColor, lightColor } from "./Section";
 import { PlayerPlay } from "tabler-icons-react";
 
-const NetworkGraph = dynamic(() => import("../components/NetworkGraph"), {
-  ssr: false,
-});
+// const NetworkGraph = dynamic(() => import('../components/NetworkGraph'), { ssr: false })
 
 const linkStyle = {
   display: "block",
