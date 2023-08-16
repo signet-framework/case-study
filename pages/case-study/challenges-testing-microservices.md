@@ -12,7 +12,7 @@ Automated software tests are broadly grouped into three categories:
 While each type of test serves a unique purpose and has a place in a well-balanced test suite, they all aim to increase developers' confidence that their application will work as expected in the real world.
 A pyramid is often used to illustrate how each type of test relates to the others.
 
-![Testing pyramid](../../../assets/pyramid.png)
+![Testing pyramid](../../assets/pyramid.png)
 
 Tests which are higher on the pyramid have a broader scope and provide more confidence that the system works correctly.
 However, broadly scoped tests take longer to run, and do less to pinpoint the exact cause of a failure.
@@ -24,7 +24,7 @@ Most applications use a mixture of different forms of testing and typically use 
 Tests are sequenced in order to catch regressions as **early as possible**, and gradually ramp up in scope as confidence increases that everything is working as it should.
 This means that unit tests are typically run first, followed by in-process integration tests, after which the application may be deployed in a staging environment for additional integration and E2E testing.
 
-![monolith CI/CD](../../../assets/monolith_cicd_2.png)
+![monolith CI/CD](../../assets/monolith_cicd_2.png)
 
 Since tests that are high on the pyramid provide the most confidence in the quality of the app, ideally they can be run as often as possible.
 However, since they also tend to be expensive and take a long time, this desire for more quality assurance must be balanced with the value of deploying updates more quickly.
@@ -56,7 +56,7 @@ To address the limited ownership problem, integration tests can be supplemented 
 The **test double** receives requests from the service being tested and sends back a canned response, enabling a team to test the integration of their service with another, without actually spinning up the other service.
 This lowers the costs of integration testing and speeds up the developer feedback loop.
 
-![Integration test vs service test](../../../assets/trains_1.svg)
+![Integration test vs service test](../../assets/trains_1.svg)
 
 However, service tests only work as long as the real external service's interface does not drift from that of the test double; if the real service changes, the test double needs to be updated as well.
 Ideally, there should be an *automated* way to validate that the test double is up to date with the real service it represents.
@@ -101,7 +101,7 @@ One solution to this dilemma is to use **alternative forms of testing** in CI/CD
 Using alternative forms of testing together with progressive delivery techniques can provide sufficient confidence during CI/CD so that broadly scoped tests don't need to be run for every deployment.
 As a result, integration and E2E tests can be run on a periodic schedule in order to catch the kinds of issues that only they can catch.
 
-![microservices CI/CD](../../../assets/microservices_cicd_3.png)
+![microservices CI/CD](../../assets/microservices_cicd_3.png)
 
 Service tests and *contract tests* are two such alternative testing methodologies that lie within the scope of this case study. Since we have already introduced service tests, we will turn our attention to contract tests in the next section.
 

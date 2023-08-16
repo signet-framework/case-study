@@ -40,7 +40,7 @@ It does this by enumerating the HTTP requests and responses that each service ex
 Both services are individually tested to ensure that they conform to the contract.
 The test fails if either service does not conform, indicating that the two services will not integrate correctly.
 
-![Integration test vs service test vs contract test](../../../assets/trains_2.svg)
+![Integration test vs service test vs contract test](../../assets/trains_2.svg)
 
 In the context of contract tests, services are classified as either a *provider* or *consumer*.
 
@@ -93,7 +93,7 @@ The consumer contract is then handed over to the provider team so they can verif
 The requests in the contract are replayed against the API (a process known as *provider verification*) and the responses from the API are compared with those specified in the contract.
 If the provider service sends the correct response for each request, the contract test passes.
 
-![consumer driven](../../../assets/consumer_driven.png)
+![consumer driven](../../assets/consumer_driven.png)
 
 A significant advantage of the consumer-driven approach is that the contract describes exactly which parts of the provider API are being used by the consumer.
 This gives the provider team insight into how they can evolve their API without breaking any consumers.
@@ -113,7 +113,7 @@ Provider-driven contract testing is nearly the reverse of consumer-driven.
 The provider contract is generated based on the current implementation of the provider service.
 Usually the provider contract comes in the form of an API specification, other times the provider team distributes a test double which consumers can test against.
 
-![provider driven](../../../assets/provider_driven.png)
+![provider driven](../../assets/provider_driven.png)
 
 The main benefit of a provider-driven approach is that it gives the provider team authority over what the integration looks like.
 Whether or not this makes sense depends on the organization and the roles of the services involved.
@@ -128,7 +128,7 @@ Provider-driven solutions commonly support the ability for writing consumer-spec
 Spec-driven contract testing occurs when the API spec is defined separately from either service's implementation.
 Usually this means that the consumer and provider teams agree on the API spec ahead of time, before either service has implemented it.
 
-![spec driven](../../../assets/spec_driven.png)
+![spec driven](../../assets/spec_driven.png)
 
 This approach flows naturally out of "Spec-first" API design, a practice where the provider team decides on a spec before writing the code, instead of documenting their implementation after it is completed.
 This design philosophy is beneficial because it allows both the consumer and provider services to be implemented simultaneously.
