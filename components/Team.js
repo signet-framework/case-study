@@ -20,7 +20,7 @@ const teamData = [
     name: "Michael Newman",
     location: "Miami, FL",
     linkedInUrl: "https://www.linkedin.com/in/michael-newman-a5465516b/",
-    personalPageUrl: "",
+    personalPageUrl: "https://mnewman.dev/",
     image: "/mn.png",
   },
   {
