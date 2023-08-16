@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import Section, { darkColor, lightColor } from "./Section";
 import { PlayerPlay } from "tabler-icons-react";
+import Team from "./Team";
 
 // const NetworkGraph = dynamic(() => import('../components/NetworkGraph'), { ssr: false })
 
@@ -20,15 +21,15 @@ const linkStyle = {
 
 const sectionStyle = {
   // margin: "1rem 0",
-  // background: "linear-gradient(90deg, #64009E 0%, #0CBAFF 100%)",
   // background: "rgb(48, 52, 58)",
+  // background: darkColor,
+  background: "linear-gradient(143deg, #64009E 40%, #0CBAFF 100%)",
   // background: "-webkit-linear-gradient(#64009E, #0CBAFF)",
   textAlign: "center",
   // height: '20rem',
   color: lightColor,
   paddingTop: "1rem",
   paddingBottom: "1rem",
-  background: darkColor,
 };
 
 const bannerStyle = {
@@ -38,42 +39,56 @@ const bannerStyle = {
   fontWeight: "bold",
   maxWidth: "50rem",
   margin: "auto",
+  minHeight: "15rem",
+  marginTop: "3rem",
 };
 
 const content = [
   {
-    title: "Service Graph",
-    description: "A visual representation of your microservice architecture.",
-    image: "/graph.png",
-  },
-  {
-    title: "Easy to Adopt",
-    description: "Automatic provider verification of your microservices.",
-    image: "/provider_verification2.svg",
-  },
-  {
-    title: "Foo Bar",
+    tag: "Spec-driven",
+    title: "Painless integration testing",
     description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    image: "/2023-08-15-13-17-49.png",
-    // children: (
-    //   <Link href="/case-study" style={linkStyle} >
-    //     Read Case Study
-    //   </Link>
-    // )
+      "Signet naturally aligns with spec-first API design. Develop in parallel, test in isolation.",
+    image: "/spec_driven.png",
   },
   {
-    title: "Lorem Ipsum",
+    tag: "Contract Broker",
+    title: "Central Hub for Contract Management",
     description:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    image: "/2023-08-15-13-17-49.png",
+      "The Signet Broker manages your contracts and presents a user-friendly interface to explore test results.",
+    image: "/web_gui.png",
   },
   {
-    title: "Bar Foo Bar",
+    tag: "Self-hosted",
+    title: "Automated deployment to your AWS account",
     description:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex esse cillum dolore eu fugiat nulla pariatur.",
-    image: "/2023-08-15-13-17-49.png",
+      "Deploy the Signet broker to your AWS cloud with a single command.",
+    image: "/aws.png",
   },
+  {
+    tag: "Per-Environment Safety Check",
+    title: "Deploy with Confidence",
+    description: `Signet's Deploy Guard keeps track of deployments and notifies you when a deployment will break something.`,
+    image: "/deploy_guard.png",
+  },
+  {
+    tag: "CI/CD integration",
+    title: "Fully Automated Testing",
+    description: `Give your CI/CD pipeline complete control of contract testing through the Signet CLI and webhooks from the Broker.`,
+    image: "/webhook.png",
+  },
+  // {
+  //   tag: "API Testing",
+  //   title: "Test APIs against their Specs",
+  //   description: ``,
+  //   image: "/webhook.png",
+  // },
+  // {
+  //   tag: "Easy to Adopt",
+  //   title: "Hands-off approach",
+  //   description: `Signet automatically generates contracts from your existing service tests.`,
+  //   image: "/signet_proxy.png",
+  // },
 ];
 
 const HomePage = () => {
@@ -83,6 +98,9 @@ const HomePage = () => {
       {/* src={"/transparent-logo-horizontal-mn.svg"} alt="logo" /> */}
       <section style={sectionStyle}>
         <div style={bannerStyle}>
+          <h1 style={{ marginBottom: "3rem", fontSize: "2.8rem" }}>
+            Deploy with Confidence
+          </h1>
           <span
             style={{
               // WebkitTextFillColor: "transparent",
@@ -95,8 +113,19 @@ const HomePage = () => {
           >
             Signet
           </span>{" "}
-          is an open-source, self-hosted framework for spec-driven contract
-          testing of microservices.
+          is an easy to use{" "}
+          {/* <span
+            style={{
+              // WebkitTextFillColor: "transparent",
+              // WebkitBackgroundClip: "text",
+              // background: "-webkit-linear-gradient(#64009E, #0CBAFF)"
+              color: "#0CBAFF",
+              // fontSize: "3rem",
+              // color: 'white',
+            }}
+          > */}
+          spec-driven
+          {/* </span> */} framework for contract testing of microservices.
         </div>
         <div
           style={{
@@ -114,34 +143,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* <section style={{
-        ...sectionStyle,
-        background: "rgb(243 244 246)",
-        color: "rgb(28, 30, 33)",
-      }}> */}
-      {/* <div style={bannerStyle} >
-          A visual representation of your microservice architecture.
-        </div> */}
-      {/* </section> */}
-
-      {/* <div
-        style={{ border: "1px solid black", width: "50%", marginLeft: "1rem", }}
-      >
-        <NetworkGraph />
-      </div> */}
-      {/* <Section
-        title="Self-hosted"
-        description="A visual representation of your microservice architecture."
-        image={'/2023-08-15-13-17-49.png'}
-        index={0}
-      />
-      <Section
-        title="Lorem Ipsum"
-        description="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
-        image={'/2023-08-15-13-17-49.png'}
-        index={1}
-      /> */}
-
       {content.map((item, index) => (
         <Section
           key={index}
@@ -149,14 +150,18 @@ const HomePage = () => {
           description={item.description}
           image={item.image}
           index={index}
+          tag={item.tag}
         >
           {item.children}
         </Section>
       ))}
-      <Section key={content.length + 1}>
-        Created by
-        <span>{" Foo"}</span>
-      </Section>
+      <section
+        style={{ ...sectionStyle, background: "rgb(48, 52, 58)" }} // darkColor
+        key={content.length + 1}
+        index={content.length}
+      >
+        <Team theme={content.length % 2 === 0 ? "light" : "dark"} />
+      </section>
     </div>
   );
 };

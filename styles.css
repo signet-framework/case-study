@@ -94,3 +94,13 @@ td img {
 .homepage div {
   height: 100%;
 }
+/*
+.team {
+  flex-wrap: nowrap;
+}
+
+@media only screen and (max-width: 400) {
+  .team {
+    flex-wrap: wrap;
+  }
+} */

@@ -17,14 +17,14 @@ const darkTheme = {
 };
 
 const lightTheme = {
-  background: lightColor,
+  background: "rgb(200, 200, 200)",
   color: darkColor,
   flexFlow: "row-reverse wrap",
 };
 
-const Section = ({ title, description, image, children, index = 0 }) => {
-  // const theme = (index % 2 === 0 ? darkTheme : lightTheme);
-  const theme = index % 2 === 0 ? lightTheme : darkTheme;
+const Section = ({ tag, title, description, image, children, index = 0 }) => {
+  const theme = index % 2 === 0 ? darkTheme : lightTheme;
+  // const theme = index % 2 === 0 ? lightTheme : darkTheme;
 
   const linkStyle = {
     display: "block",
@@ -41,27 +41,42 @@ const Section = ({ title, description, image, children, index = 0 }) => {
 
   const sectionStyle = {
     textAlign: "left",
-    paddingTop: "1rem",
-    paddingBottom: "1rem",
+    // paddingTop: "1rem",
+    // paddingBottom: "1rem",
     padding: "1rem",
     display: "flex",
     flexDirection: index % 2 === 0 ? "row" : "row-reverse",
     justifyContent: "center",
     minHeight: "30rem",
+    maxWidth: "100%",
     ...theme,
   };
 
-  const Title = () => (
+  const Tag = () => (
     <div
       style={{
         fontSize: "1rem",
+        fontWeight: "bold",
+        color: theme === darkTheme ? "#0CBAFF" : "#64009E",
+        opacity: 0.7,
+        // color: "#0CBAFF"
+      }}
+    >
+      {tag}
+    </div>
+  );
+
+  const Title = () => (
+    <h2
+      style={{
+        fontSize: "2rem",
         fontWeight: "bold",
         color: theme === darkTheme ? "#0CBAFF" : "#64009E",
         // color: "#0CBAFF"
       }}
     >
       {title}
-    </div>
+    </h2>
   );
 
   const Description = () => (
@@ -70,6 +85,7 @@ const Section = ({ title, description, image, children, index = 0 }) => {
         fontSize: "1.5rem",
         fontWeight: "normal",
         maxWidth: "35rem",
+        // textAlign: "justify",
       }}
     >
       {description}
@@ -79,11 +95,12 @@ const Section = ({ title, description, image, children, index = 0 }) => {
   const Image = () => (
     <img
       style={{
-        objectFit: "contain",
-        maxWidth: "35rem",
+        objectFit: "scale-down",
+        maxWidth: "min(100%, 35rem)",
+        // maxWidth: "35rem",
         margin: "1rem",
-        borderRadius: "1rem",
-        flex: "auto",
+        borderRadius: "0.5rem",
+        flex: "1 1 auto",
       }}
       src={image}
     />
@@ -97,9 +114,13 @@ const Section = ({ title, description, image, children, index = 0 }) => {
         justifyContent: "center",
         padding: "2rem 0rem",
         alignSelf: "center",
+        maxWidth: "30rem",
+        margin: "2rem",
         // margin: "auto",
+        // flex: "1 1 auto",
       }}
     >
+      <Tag />
       <Title />
       <Description />
       <div style={{ display: "flex", margin: "auto" }}>{children}</div>
@@ -107,9 +128,24 @@ const Section = ({ title, description, image, children, index = 0 }) => {
   );
 
   return (
-    <section style={sectionStyle}>
+    <section style={sectionStyle} className="homepage-section">
+      {/* <div
+        style={{
+          // textAlign: "left",
+          // paddingTop: "1rem",
+          // paddingBottom: "1rem",
+          // padding: "1rem",
+          display: "flex",
+          flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+          justifyContent: "center",
+          // minHeight: "30rem",
+          maxWidth: "40rem",
+          flexWrap: "wrap",
+        }}
+      > */}
       <TextContent />
-      <Image />
+      {typeof image === "string" ? <Image /> : image}
+      {/* </div> */}
     </section>
   );
 };

@@ -7,8 +7,11 @@ const config: DocsThemeConfig = {
     <img src={"/signet-logo-only.svg"} style={{ maxHeight: "5rem" }} alt="logo" />
     <span style={{
       fontSize: "2rem",
+      fontWeight: "bold",
       // color: "linear-gradient(90deg, #64009E 0%, #0CBAFF 100%)"
-      color: "#0CBAFF"
+      color: "#0CBAFF",
+      marginLeft: "-0.8rem",
+      marginTop: "0.5rem"
     }}>
       Signet
     </span>
@@ -18,7 +21,14 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/signet-framework/case-study',
   footer: {
-    text: '',
+    text: (
+      <span>
+        ©{' '}{new Date().getFullYear()}{' '}
+        <a href="https://nextra.site" target="_blank">
+          Signet
+        </a>
+      </span>
+    ),
   },
   editLink: {
     text: null,
