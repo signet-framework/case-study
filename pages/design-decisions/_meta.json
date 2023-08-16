@@ -1,7 +1,7 @@
 {
   "contract-cardinality": "Contract Cardinality",
-  "contract-generation": "Contract Generation",
   "provider-verification": "Provider Verification",
+  "contract-generation": "Contract Generation",
   "dedicated-broker": "Dedicated Broker",
   "cicd-integration": "Automated CI/CD Integration"
 }
