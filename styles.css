@@ -104,3 +104,39 @@ td img {
     flex-wrap: wrap;
   }
 } */
+
+#inlineFrameExample {
+  /* transform: scale(0.2); */
+  /* transform-origin: 0 0; */
+  /* border: 1px solid red; */
+  /* zoom: 0.5 ; */
+}
+
+main {
+  background-color: rgb(48, 52, 58);
+}
+
+div.nextra-nav-container-blur {
+  opacity: 95%;
+  background-color: rgb(48, 52, 58) !important;
+}
+
+footer {
+  background-color: rgb(48, 52, 58) !important;
+}
+
+nav[aria-label="table of contents"] div div {
+  display: none;
+}
+/* main.dark, footer.dark {
+  background-color: "rgb(48, 52, 58)" !important;
+}
+
+:is(html[class~="dark"] .dark\:nx-text-gray-400){
+  background-color: "rgb(48, 52, 58)" !important;
+}
+
+ #__next > main > div > footer {
+  background-color: rgb(48, 52, 58) !important;
+
+ } */

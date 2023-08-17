@@ -4,14 +4,15 @@ import { useRouter } from 'next/router'
 
 const config: DocsThemeConfig = {
   logo: (<>
-    <img src={"/signet-logo-only.svg"} style={{ maxHeight: "5rem" }} alt="logo" />
+    {/* <img src={"/signet-logo-only.svg"} style={{ maxHeight: "5rem" }} alt="logo" /> */}
+    <img src={"/signet_logo_only_fixed.png"} style={{ maxHeight: "3rem" }} alt="logo" />
     <span style={{
-      fontSize: "2rem",
+      fontSize: "2.2rem",
       fontWeight: "bold",
-      // color: "linear-gradient(90deg, #64009E 0%, #0CBAFF 100%)"
+      // color: "linear-gradient(90deg, #64009E 0%, #0CBAFF 100%)",
       color: "#0CBAFF",
-      marginLeft: "-0.8rem",
-      marginTop: "0.5rem"
+      marginLeft: "0.5rem",
+      // marginTop: "0.5rem"
     }}>
       Signet
     </span>
@@ -45,7 +46,7 @@ const config: DocsThemeConfig = {
     </>
   ),
   sidebar: {
-    defaultMenuCollapseLevel: Infinity,
+    defaultMenuCollapseLevel: 12,
   },
   // banner: {
   //   dismissible: true,

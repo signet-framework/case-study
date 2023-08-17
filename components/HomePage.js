@@ -1,9 +1,9 @@
 // import { Home } from "tabler-icons-react";
 import { Bleed } from "nextra-theme-docs";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import Link from "next/link";
 import Section, { darkColor, lightColor } from "./Section";
-import { PlayerPlay } from "tabler-icons-react";
+// import { PlayerPlay } from "tabler-icons-react";
 import Team from "./Team";
 
 // const NetworkGraph = dynamic(() => import('../components/NetworkGraph'), { ssr: false })
@@ -45,49 +45,113 @@ const bannerStyle = {
 
 const content = [
   {
-    tag: "Spec-driven",
-    title: "Painless integration testing",
-    description:
-      "Signet naturally aligns with spec-first API design. Develop in parallel, test in isolation.",
-    image: "/spec_driven.png",
-  },
-  {
     tag: "Contract Broker",
     title: "Central Hub for Contract Management",
     description:
       "The Signet Broker manages your contracts and presents a user-friendly interface to explore test results.",
     image: "/web_gui.png",
+    image: (
+      // <iframe
+      //   id="inlineFrameExample"
+      //   title="Inline Frame Example"
+      //   width="560"
+      //   height="464"
+      //   src="https://signet-broker-wfq99.ondigitalocean.app/"
+      // ></iframe>
+      <video
+        src="/broker_demo.mp4"
+        autoPlay
+        playsInline
+        // pre="auto"
+        // controls="false"
+        loop
+        style={{
+          // objectFit: "scale-down",
+          maxWidth: "min(100%, 35rem)",
+
+          maxHeight: "20rem",
+          marginTop: "auto",
+          marginBottom: "auto",
+          borderRadius: "0.5rem",
+          // margin: "auto auto",
+          // maxWidth: "35rem",
+        }}
+      ></video>
+    ),
   },
   {
-    tag: "Self-hosted",
-    title: "Automated deployment to your AWS account",
+    tag: "Spec-driven",
+    title: "Painless Integration Testing",
     description:
-      "Deploy the Signet broker to your AWS cloud with a single command.",
-    image: "/aws.png",
+      "Signet naturally aligns with spec-first API design. Develop in parallel, test in isolation.",
+    image: "/contract_testing.png",
+    // image: "/spec-driven.png",
   },
   {
     tag: "Per-Environment Safety Check",
     title: "Deploy with Confidence",
     description: `Signet's Deploy Guard keeps track of deployments and notifies you when a deployment will break something.`,
-    image: "/deploy_guard.png",
+    // image: "/deploy_guard_logo.png",
+    // imgStyle: {
+    //   maxHeight: "5rem",
+    // },
+    image: (
+      <img
+        style={{
+          objectFit: "scale-down",
+          maxWidth: "min(100%, 35rem)",
+          maxHeight: "20rem",
+          // maxWidth: "35rem",
+          marginTop: "auto",
+          marginBottom: "auto",
+          borderRadius: "0.5rem",
+          flex: "1 1 auto",
+        }}
+        src={"/deploy_guard_logo.png"}
+      />
+    ),
+  },
+  {
+    tag: "Self-hosted",
+    title: "Automated Deployment to AWS",
+    description:
+      "Deploy the Signet broker to your AWS cloud with a single command.",
+    image: "/aws.png",
   },
   {
     tag: "CI/CD integration",
     title: "Fully Automated Testing",
     description: `Give your CI/CD pipeline complete control of contract testing through the Signet CLI and webhooks from the Broker.`,
-    image: "/webhook.png",
+    // image: "/ci_cd.png",
+    image: (
+      <img
+        style={{
+          objectFit: "scale-down",
+          maxWidth: "min(100%, 35rem)",
+          maxHeight: "20rem",
+          // maxWidth: "35rem",
+          marginTop: "auto",
+          marginBottom: "auto",
+          borderRadius: "0.5rem",
+          flex: "1 1 auto",
+        }}
+        src={"/ci_cd.png"}
+      />
+    ),
+    layout: "vertical",
+  },
+  {
+    tag: "Easy to Adopt",
+    title: "No Need to Write New Tests", // was "hands-off approach before"
+    description: `Signet tests API clients by recording the network calls they make during service testing.`,
+    image: "/signet_proxy.png",
   },
   // {
-  //   tag: "API Testing",
-  //   title: "Test APIs against their Specs",
-  //   description: ``,
-  //   image: "/webhook.png",
-  // },
-  // {
-  //   tag: "Easy to Adopt",
-  //   title: "Hands-off approach",
-  //   description: `Signet automatically generates contracts from your existing service tests.`,
-  //   image: "/signet_proxy.png",
+  //   tag: "API Verification",
+  //   title: "Automatically Generate API Tests",
+  //   description:
+  //     "Signet parses OpenAPI specifications and generates tests to run against service APIs.",
+  //   image: "/provider_verification.png",
   // },
 ];
 
@@ -151,6 +215,8 @@ const HomePage = () => {
           image={item.image}
           index={index}
           tag={item.tag}
+          imgStyle={item.imgStyle}
+          layout={item.layout}
         >
           {item.children}
         </Section>
@@ -161,7 +227,7 @@ const HomePage = () => {
         key={content.length + 1}
         index={content.length}
       >
-        <Team theme={content.length % 2 === 0 ? "dark" : "light"} />
+        <Team theme={content.length % 2 === 0 ? "light" : "dark"} />
       </section>
     </div>
   );

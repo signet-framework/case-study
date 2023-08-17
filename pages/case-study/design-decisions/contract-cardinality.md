@@ -12,9 +12,7 @@ If a provider serves multiple consumers, they would all be associated with the s
 For every consumer, we require a *new* consumer contract for *each* associated provider.
 Conversely, for each provider, only a *single* provider specification is needed to cover *all* associated consumers.
 
-[NTD: these are rough placeholder diagrams]
-
-![contracts and specs](../../../assets/image-2.png)
+![contracts and specs](../../../assets/contract_cardinality_signet.png)
 
 ## Alternative Approaches
 
@@ -24,7 +22,7 @@ Conversely, for each provider, only a *single* provider specification is needed 
 In this approach, the consumer team works directly with the API spec and tests that their implementation uses the API in adherence to the spec.
 The main benefit of this approach is that it removes the burdensome task of generating a contract on the consumer side.
 
- ![No consumer contract](../../../assets/image-1.png)
+ ![No consumer contract](../../../assets/no_consumer_contract.png)
 
 However, this simplicity comes at the cost of slower backward compatibility testing for the provider specification.
 When the specification changes, a compatibility test allows us to verify whether the changes are compatible with existing consumers.
@@ -40,7 +38,7 @@ In this approach, developers create a *new provider specification for each assoc
 Each provider specification represents all of the API behaviors offered to a specific consumer.
 The main advantage of this approach is its support for more flexible independent deployment.
 
-![One spec per consumer](../../../assets/image.png)
+![One spec per consumer](../../../assets/one_spec_per_consumer.png)
 
 Consider a scenario where five consumers depend on one provider, but the provider has only implemented the requirements for four of them.
 If there was only one specification, the provider would fail provider verification and be unable to be deployed alongside any of the four consumers, even though they are all compatible.

@@ -22,9 +22,18 @@ const lightTheme = {
   flexFlow: "row-reverse wrap",
 };
 
-const Section = ({ tag, title, description, image, children, index = 0 }) => {
-  const theme = index % 2 === 0 ? darkTheme : lightTheme;
-  // const theme = index % 2 === 0 ? lightTheme : darkTheme;
+const Section = ({
+  tag,
+  title,
+  description,
+  image,
+  children,
+  imgSTyle,
+  layout = "horizontal",
+  index = 0,
+}) => {
+  // const theme = index % 2 === 0 ? darkTheme : lightTheme;
+  const theme = index % 2 === 0 ? lightTheme : darkTheme;
 
   const linkStyle = {
     display: "block",
@@ -39,13 +48,20 @@ const Section = ({ tag, title, description, image, children, index = 0 }) => {
     fontWeight: "bold",
   };
 
+  let flexDir;
+  if (layout !== "vertical") {
+    flexDir = index % 2 === 0 ? "row" : "row-reverse";
+  } else {
+    flexDir = "column-reverse";
+  }
+
   const sectionStyle = {
     textAlign: "left",
     // paddingTop: "1rem",
     // paddingBottom: "1rem",
     padding: "1rem",
     display: "flex",
-    flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+    flexDirection: flexDir,
     justifyContent: "center",
     minHeight: "30rem",
     maxWidth: "100%",
@@ -97,10 +113,12 @@ const Section = ({ tag, title, description, image, children, index = 0 }) => {
       style={{
         objectFit: "scale-down",
         maxWidth: "min(100%, 35rem)",
+        maxHeight: "30rem",
         // maxWidth: "35rem",
-        margin: "1rem",
+        margin: layout === "horizontal" ? "1rem" : "0 auto",
         borderRadius: "0.5rem",
         flex: "1 1 auto",
+        ...imgSTyle,
       }}
       src={image}
     />

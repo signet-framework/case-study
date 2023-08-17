@@ -114,7 +114,7 @@ const Team = ({ theme }) => {
         }}
       >
         {teamData.map((profile) => (
-          <Profile {...profile} theme={theme} />
+          <Profile {...profile} theme={theme} key={profile.name} />
         ))}
       </div>
     </div>

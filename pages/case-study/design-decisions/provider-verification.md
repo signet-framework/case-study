@@ -28,7 +28,7 @@ The approach we settled on is centered around *black box testing*.
 *Black box testing* is a testing technique in which the code and implementation details of the tested software are unexposed to the tester.
 We achieved this by simulating a mock consumer that utilizes the OpenAPI Specification to send requests to the provider.
 
-![provider-verification](../../../assets/provider_verification.svg)
+![provider-verification](../../../assets/provider_verification.png)
 
 The mock consumer sends a request to the provider for each described request in the specification.
 If all the provider responses satisfy the requirements of the specification, then the provider is verified.
