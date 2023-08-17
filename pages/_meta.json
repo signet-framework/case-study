@@ -13,6 +13,9 @@
   },
   "team": {
     "title": "Team",
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
   }
 }
