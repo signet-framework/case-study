@@ -38,7 +38,7 @@ We considered two extraction methods, which we refer to as *recording* and *read
 Signet offers a **passthrough proxy** that sits between the consumer and mock provider server to record all HTTP requests and responses during the service tests.
 After the tests finish, we can use the recorded data to generate a consumer contract.
 
-![proxy](../../../assets/signet_proxy.svg)
+![proxy](../../../assets/signet_proxy.png)
 
 The benefit of this approach is that it is not code-invasive and is compatible with any HTTP mocking service, allowing easy integration into an existing system.
 However, a notable drawback of this method is that the consumer contract can only be generated and published *after* the service tests finish executing, which results in delayed feedback on contract comparison.
