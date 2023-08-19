@@ -11,6 +11,10 @@
       "layout": "raw"
     }
   },
+  "docs": {
+    "type": "page",
+    "title": "Documentation"
+  },
   "team": {
     "title": "Team",
     "type": "page",
