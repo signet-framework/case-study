@@ -3,7 +3,7 @@ import { Bleed } from "nextra-theme-docs";
 // import dynamic from "next/dynamic";
 import Link from "next/link";
 import Section, { darkColor, lightColor } from "./Section";
-// import { PlayerPlay } from "tabler-icons-react";
+import { PlayerPlay } from "tabler-icons-react";
 import Team from "./Team";
 
 // const NetworkGraph = dynamic(() => import('../components/NetworkGraph'), { ssr: false })
@@ -198,9 +198,13 @@ const HomePage = () => {
             marginTop: "1rem",
           }}
         >
-          {/* <Link href="/case-study" style={linkStyle}>
+          <Link
+            href="https://youtu.be/ZEplW02w22A"
+            target="_blank"
+            style={linkStyle}
+          >
             <PlayerPlay style={{ display: "inline" }} /> Watch Tech Talk
-          </Link> */}
+          </Link>
           <Link href="/case-study" style={linkStyle}>
             Read the Case Study
           </Link>
