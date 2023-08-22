@@ -13,7 +13,7 @@ const teamData = [
     name: "Zach Morgan",
     location: "Bend, OR",
     linkedInUrl: "https://www.linkedin.com/in/zachmorgan97/",
-    personalPageUrl: "",
+    personalPageUrl: "https://zachmorgan.dev",
     image: "/zm.png",
   },
   {

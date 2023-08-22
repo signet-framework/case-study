@@ -23,7 +23,7 @@ const sectionStyle = {
   // margin: "1rem 0",
   // background: "rgb(48, 52, 58)",
   // background: darkColor,
-  background: "linear-gradient(143deg, #64009E 40%, #0CBAFF 100%)",
+  // background: "linear-gradient(143deg, #64009E 40%, #0CBAFF 100%)",
   // background: "-webkit-linear-gradient(#64009E, #0CBAFF)",
   textAlign: "center",
   // height: '20rem',
@@ -162,7 +162,7 @@ const HomePage = () => {
       {/* src={"/transparent-logo-horizontal-mn.svg"} alt="logo" /> */}
       <section style={sectionStyle}>
         <div style={bannerStyle}>
-          <h1 style={{ marginBottom: "3rem", fontSize: "2.8rem" }}>
+          <h1 style={{ marginBottom: "3rem", fontSize: "2.8rem", color: "#0CBAFF",}}>
             Deploy with Confidence
           </h1>
           <span
@@ -170,7 +170,7 @@ const HomePage = () => {
               // WebkitTextFillColor: "transparent",
               // WebkitBackgroundClip: "text",
               // background: "-webkit-linear-gradient(#64009E, #0CBAFF)"
-              color: "#0CBAFF",
+              // color: "#0CBAFF",
               // fontSize: "3rem",
               // color: 'white',
             }}
@@ -198,15 +198,15 @@ const HomePage = () => {
             marginTop: "1rem",
           }}
         >
+          <Link href="/case-study" style={linkStyle}>
+            Read the Case Study
+          </Link>
           <Link
             href="https://youtu.be/ZEplW02w22A"
             target="_blank"
             style={linkStyle}
           >
             <PlayerPlay style={{ display: "inline" }} /> Watch Tech Talk
-          </Link>
-          <Link href="/case-study" style={linkStyle}>
-            Read the Case Study
           </Link>
         </div>
       </section>
