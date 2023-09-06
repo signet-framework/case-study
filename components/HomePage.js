@@ -162,22 +162,30 @@ const HomePage = () => {
       {/* src={"/transparent-logo-horizontal-mn.svg"} alt="logo" /> */}
       <section style={sectionStyle}>
         <div style={bannerStyle}>
-          <h1 style={{ marginBottom: "3rem", fontSize: "2.8rem", color: "#0CBAFF",}}>
+          <h1
+            style={{
+              marginBottom: "3rem",
+              fontSize: "2.8rem",
+              color: "#0CBAFF",
+            }}
+          >
             Deploy with Confidence
           </h1>
           <span
-            style={{
-              // WebkitTextFillColor: "transparent",
-              // WebkitBackgroundClip: "text",
-              // background: "-webkit-linear-gradient(#64009E, #0CBAFF)"
-              // color: "#0CBAFF",
-              // fontSize: "3rem",
-              // color: 'white',
-            }}
+            style={
+              {
+                // WebkitTextFillColor: "transparent",
+                // WebkitBackgroundClip: "text",
+                // background: "-webkit-linear-gradient(#64009E, #0CBAFF)"
+                // color: "#0CBAFF",
+                // fontSize: "3rem",
+                // color: 'white',
+              }
+            }
           >
             Signet
           </span>{" "}
-          is an easy to use{" "}
+          is an easy-to-use{" "}
           {/* <span
             style={{
               // WebkitTextFillColor: "transparent",
